@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "TFDefine.h"
+#import "FilterObject.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self initStructure];
+    [self initFilterList];
+    self.mFilterObject = [[FilterObject alloc] init];
+    
     // Override point for customization after application launch.
+    self.mCurrentState = kFilterFilter;
     return YES;
 }
 
@@ -42,4 +49,89 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)initFilterList
+{
+    self.mListFilter = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *arrObject = [[NSMutableArray alloc] init];
+    NSMutableArray *arrAcademicLevel = [[NSMutableArray alloc] init];
+    NSMutableArray *arrTypeScholar = [[NSMutableArray alloc] init];
+    
+    //arrObject
+    NSDictionary *tDict = @{@"property": kFilterType_Gender};
+    [arrObject addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_NoiO};
+    [arrObject addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_Religion};
+    [arrObject addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_Disability};
+    [arrObject addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_TerminalIll};
+    [arrObject addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_Family_Policy};
+    [arrObject addObject:tDict];
+    
+    //arrAcademicLevel
+    tDict = @{@"property": kFilterType_AcademicLevelNow};
+    [arrAcademicLevel addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_AcademicLevel};
+    [arrAcademicLevel addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_Major};
+    [arrAcademicLevel addObject:tDict];
+    
+    //arrTypeScholar
+    tDict = @{@"property": kFilterType_ScholarshipType};
+    [arrTypeScholar addObject:tDict];
+    
+    tDict = @{@"property": kFilterType_Talent};
+    [arrTypeScholar addObject:tDict];
+    
+    [self.mListFilter addObject:arrObject];
+    
+    [self.mListFilter addObject:arrAcademicLevel];
+    
+    [self.mListFilter addObject:arrTypeScholar];
+
+}
+
+- (void)initStructure
+{
+    self.mSlideNavigationController = (SlideNavigationController *)self.window.rootViewController;
+    [self.mSlideNavigationController setEnableSwipeGesture:YES];
+    
+    
+    LeftSlideController *mLeftSlide = [self.mSlideNavigationController.storyboard instantiateViewControllerWithIdentifier:kStoryboardID_LeftSlideController];
+    self.mLeftSlide = mLeftSlide;
+    [SlideNavigationController sharedInstance].leftMenu = mLeftSlide;
+}
+
+#pragma mark - PUBLIC METHOD
+//------------------------------------------
+- (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController
+{
+    sController.navigationItem.title = sTitle;
+    sController.navigationController.navigationBar.tintColor = RGB(66, 66, 66);
+    [sController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: RGB(66, 66, 66)}];
+    if (sIsCanBack)
+    {
+        UIButton *tLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [tLeftButton setImage:[UIImage imageNamed:@"ButtonBack"] forState:UIControlStateNormal];
+        tLeftButton.frame = CGRectMake(0, 0, 25, 25);
+        [tLeftButton addTarget:sController action:@selector(actionBackButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        sController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tLeftButton];
+    }
+    sController.navigationController.navigationBarHidden = NO;
+}
+
+- (IBAction)actionBackButtonPressed:(id)sender
+{
+    
+}
 @end

@@ -1,0 +1,102 @@
+//
+//  PrefixHeader.pch
+//  DenDomDom
+//
+//  Created by Thien Banh on 10/28/15.
+//  Copyright (c) 2015 DiemMac. All rights reserved.
+//
+
+#ifndef DenDomDom_PrefixHeader_pch
+#define DenDomDom_PrefixHeader_pch
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "TFDefine.h"
+#import "TFUtil.h"
+#import "TFStatusCode.h"
+#import "AppDelegate.h"
+#import "SlideNavigationController.h"
+#import "TFWebServiceManager.h"
+
+#define TFAppDelegate                               ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
+#define IMAGESPATH                                  [NSHomeDirectory() stringByAppendingString:@"/Documents/"]
+
+#define HOMEDIRECTORY                               [[NSBundle mainBundle] resourcePath]
+
+#define DOCUMENTDIRECTORY                           [NSHomeDirectory() stringByAppendingString:@"/Documents/"]
+
+#define LIBRARY_CATCHES_DIRECTORY                   [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/"]
+
+#define SQLITE_DIRECTORY                            [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/database/"]
+
+#define TEMPDIRECTORY                               [NSHomeDirectory() stringByAppendingString:@"/tmp/"]
+
+#define AUDIODIRECTION                              [NSHomeDirectory() stringByAppendingString:@"/Documents/Audio/"]
+
+#define RECORD_DIRECTION                             [NSHomeDirectory() stringByAppendingString:@"/Documents/Record/"]
+
+/*
+ * Check device type
+ */
+#define IS_IPAD                                     (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+#define IS_IPHONE                                   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+#define IS_IPHONE_4                                 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 480.0f)
+
+#define IS_IPHONE_5                                 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0f)
+
+#define IS_IPHONE_6                                 ( [[UIScreen mainScreen] bounds ].size.height == 667 )
+
+#define IS_IPHONE_6PLUS                             ( [[UIScreen mainScreen] bounds ].size.height == 736 )
+
+#define SCREEN_SIZE                                 [UIScreen mainScreen].bounds.size
+
+#define SCREEN_CONSTANT                             [UIScreen mainScreen].bounds.size.width / 320.0f
+
+#define IPHONE5_ADJUST(y)                           (IS_IPHONE_5 ? (y + 88) : y)
+
+/**
+ *  Generate color by RGB code
+ */
+#define RGB(r, g, b)                                [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+
+#define RGBA(r, g, b, a)                            [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define FONT_REGULAR(s)                             [UIFont fontWithName:@"HelveticaNeue" size:(s)];
+#define FONT_LIGHT(s)                               [UIFont fontWithName:@"HelveticaNeue-Light" size:(s)];
+#define FONT_BOLD(s)                                [UIFont fontWithName:@"HelveticaNeue-Bold" size:(s)];
+#define FONT_MEDIUM(s)                              [UIFont fontWithName:@"HelveticaNeue-Medium" size:(s)];
+
+#define LS(v)                                       NSLocalizedString(v, nil)
+
+/*
+ *  Custom NSLog Function
+ */
+#ifdef DEBUG
+#   define DLog(fmt, ...)                           NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
+//
+// ALog always displays output regardless of the DEBUG setting
+//
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+/**
+ *  Check OS version
+ */
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+#endif
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

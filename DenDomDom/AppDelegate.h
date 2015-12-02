@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
+#import "LeftSlideController.h"
+
+@class FilterObject;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-
+@property (strong, nonatomic) SlideNavigationController *mSlideNavigationController;
+@property (strong, nonatomic) LeftSlideController *mLeftSlide;
+@property (strong, nonatomic) NSMutableArray *mListFilter;
+@property (assign, nonatomic) NSInteger mCurrentState;
+@property (strong, nonatomic) FilterObject *mFilterObject;
+- (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController;
 @end
 
