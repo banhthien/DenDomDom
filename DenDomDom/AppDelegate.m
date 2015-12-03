@@ -9,8 +9,10 @@
 #import "AppDelegate.h"
 #import "TFDefine.h"
 #import "FilterObject.h"
+#import "AboutController.h"
+#import "HomeController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<AboutControllerDelegate>
 
 @end
 
@@ -133,6 +135,59 @@
     }
     sController.navigationController.navigationBarHidden = NO;
 }
+
+- (void)showInfoWithController:(UIViewController*)sRoot
+{
+    UIStoryboard *tStoryboard = kStoryboard_Main;
+    AboutController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_AboutController];
+    tView.mDelegate = self;
+    [tView setProductViewController:sRoot];
+    [self.window.rootViewController.view addSubview:tView.view];
+    [self.window.rootViewController addChildViewController:tView];
+    [tView didMoveToParentViewController:self.window.rootViewController];
+    [tView showInfo];
+}
+
+- (void)hideInfoWithController:(UIViewController*)sRoot
+{
+    AboutController *tView;
+    for (UIViewController *tController in self.window.rootViewController.childViewControllers)
+    {
+        if ([tController.class isSubclassOfClass:[AboutController class]])
+        {
+            tView = (AboutController *)tController;
+            break;
+        }
+    }
+    if (tView)
+    {
+        [tView hideInfo];
+    }
+}
+
+- (void)tfAboutController_DidHiden:(UIViewController *)sProductController
+{
+    AboutController *tView;
+    
+    for (UIViewController *tController in TFAppDelegate.window.rootViewController.childViewControllers)
+    {
+        if ([tController.class isSubclassOfClass:[AboutController class]])
+        {
+            tView = (AboutController *)tController;
+            break;
+        }
+    }
+    
+    if (tView)
+    {
+        [tView willMoveToParentViewController:nil];
+        [tView.view removeFromSuperview];
+        [tView removeFromParentViewController];
+    }
+    [TFAppDelegate.mSlideNavigationController openLeftMenu];
+    
+}
+
 
 - (IBAction)actionBackButtonPressed:(id)sender
 {

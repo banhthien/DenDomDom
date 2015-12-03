@@ -12,11 +12,14 @@
 @interface HomeCell()
 {
     // OUTLET
+
     __weak IBOutlet UIImageView *oLogoImage;
     __weak IBOutlet UILabel *oNameLabel;
     __weak IBOutlet UIImageView *oImageView;
     __weak IBOutlet UILabel *oInfoLabel;
     
+    __weak IBOutlet UIView *oTimeView;
+    __weak IBOutlet UIButton *oShareButton;
     // PROPERTY
     NSInteger mIndex;
 }
@@ -30,6 +33,10 @@
     mIndex = 0;
     oLogoImage.clipsToBounds = YES;
     oLogoImage.layer.cornerRadius = oLogoImage.frame.size.width/2;
+    oShareButton.layer.borderColor = [RGB(0, 175, 240) CGColor];
+    oShareButton.layer.borderWidth = 1;
+    oShareButton.layer.cornerRadius = 3;
+    oTimeView.layer.cornerRadius = 3;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [TFAppDelegate setNavigationTitle:@"Lọc" CanBack:YES ForController:self];
+    [TFAppDelegate setNavigationTitle:@"Bộ lọc" CanBack:YES ForController:self];
     [self setUpRightButton];
     [self loadMenuArray];
 }
@@ -111,7 +111,7 @@
 
     UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(tIcon.frame.origin.x + tIcon.frame.size.width + 10, 5, SCREEN_SIZE.width - 20, 30)];
 
-    tLabel.font = FONT_LIGHT(18);
+    tLabel.font = FONT_LIGHT(17);
     
     
     if (section == 0)

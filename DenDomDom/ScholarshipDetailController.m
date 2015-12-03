@@ -71,9 +71,24 @@
     // Do any additional setup after loading the view.
     [TFAppDelegate setNavigationTitle:@"Detail" CanBack:YES ForController:self];
     [TFAppDelegate.mSlideNavigationController setLeftMenuEnable:YES];
-    [self setUpView];
-    [self setUpArray];
+//    [self setUpView];
+//    [self setUpArray];
     [self setUpRightButton];
+}
+
+- (void)setUpRightButton
+{
+    UIButton *tRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [tRightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [tRightButton setImage:[UIImage imageNamed:@"Share"] forState:UIControlStateNormal];
+    tRightButton.frame = CGRectMake(0, 0, 30, 30);
+    [tRightButton addTarget:self action:@selector(shareButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tRightButton];
+}
+
+- (IBAction)shareButtonPressed:(id)sender
+{
+    
 }
 
 - (void)setUpView
@@ -299,21 +314,6 @@
         [mFormInfo addObject:tDict];
     }
    
-}
-
-- (void)setUpRightButton
-{
-    UIButton *tRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [tRightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [tRightButton setTitle:@"Share" forState:UIControlStateNormal];
-    tRightButton.frame = CGRectMake(0, 0, 50, 32);
-    [tRightButton addTarget:self action:@selector(actionShareButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tRightButton];
-}
-
-- (IBAction)actionShareButtonPressed:(id)sender
-{
-    NSLog(@"Share");
 }
 
 - (IBAction)actionBackButtonPressed:(id)sender

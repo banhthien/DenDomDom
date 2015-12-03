@@ -78,6 +78,7 @@
 		6CFC268C1BE1097A00E65498 /* LeftSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFC268B1BE1097A00E65498 /* LeftSlideCell.m */; };
 		6CFE8EF61BE5BA3600E0DF90 /* FilterDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFE8EF51BE5BA3600E0DF90 /* FilterDetailController.m */; };
 		6CFE8EFA1BE5C12600E0DF90 /* FilterDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFE8EF91BE5C12600E0DF90 /* FilterDetailCell.m */; };
+		B6A6CAFB1C103A69006E21E5 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6CAFA1C103A69006E21E5 /* AboutController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,8 @@
 		6CFE8EF51BE5BA3600E0DF90 /* FilterDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDetailController.m; sourceTree = "<group>"; };
 		6CFE8EF81BE5C12600E0DF90 /* FilterDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDetailCell.h; sourceTree = "<group>"; };
 		6CFE8EF91BE5C12600E0DF90 /* FilterDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDetailCell.m; sourceTree = "<group>"; };
+		B6A6CAF91C103A69006E21E5 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		B6A6CAFA1C103A69006E21E5 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +337,7 @@
 		6C61CA2E1BDFB708007A7110 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B6A6CAF81C103A52006E21E5 /* About */,
 				6CFE8EF31BE5B9A800E0DF90 /* FilterDetail */,
 				6CA491B91BE25935002CEE21 /* Filter */,
 				6CFC26851BE1094400E65498 /* LeftSlide */,
@@ -676,6 +680,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		B6A6CAF81C103A52006E21E5 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				B6A6CAF91C103A69006E21E5 /* AboutController.h */,
+				B6A6CAFA1C103A69006E21E5 /* AboutController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -837,6 +850,7 @@
 				6CFC268C1BE1097A00E65498 /* LeftSlideCell.m in Sources */,
 				6C8207FA1BF76A0100CB6063 /* AFURLRequestSerialization.m in Sources */,
 				6CF1CBED1BF854AD00EF7363 /* Province.m in Sources */,
+				B6A6CAFB1C103A69006E21E5 /* AboutController.m in Sources */,
 				6C8208001BF76A3800CB6063 /* TFWebServiceManager.m in Sources */,
 				6CFC267F1BE1048000E65498 /* SlideNavigationController.m in Sources */,
 				6CF1CBE11BF84EFC00EF7363 /* Ethnic.m in Sources */,

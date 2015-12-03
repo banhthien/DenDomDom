@@ -30,6 +30,8 @@
 #define kStoryboardID_ScholarshipDetailController              @"kStoryboardID_ScholarshipDetailController"
 #define kStoryboardID_LeftSlideController                      @"kStoryboardID_LeftSlideController"
 
+#define kStoryboardID_AboutController                           @"kStoryboardID_AboutController"
+
 #pragma mark - User Default
 //----------------------------------
 #define kUserDefault_IsTheFirstTime                             @"kUserDefault_IsTheFirstTime"

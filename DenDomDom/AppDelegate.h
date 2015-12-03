@@ -21,5 +21,9 @@
 @property (assign, nonatomic) NSInteger mCurrentState;
 @property (strong, nonatomic) FilterObject *mFilterObject;
 - (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController;
+
+- (void)showInfoWithController:(UIViewController*)sRoot;
+- (void)hideInfoWithController:(UIViewController*)sRoot;
+
 @end
 

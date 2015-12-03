@@ -35,7 +35,7 @@
         [self.view addSubview:view];
     }
     
-    oLogoApp.layer.cornerRadius = oLogoApp.frame.size.width/2;
+
     [self loadMenuArray];
 }
 
@@ -92,6 +92,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (indexPath.row == 4) {
+        UIViewController *tTabBarController = [TFAppDelegate mSlideNavigationController].topViewController;
+        if ([tTabBarController.class isSubclassOfClass:[HomeController class]])
+        {
+            [TFAppDelegate.mSlideNavigationController closeMenuWithCompletion:^{
+                
+                
+            }];
+        }
+        [TFAppDelegate showInfoWithController:self];
+    }
+    
     UIViewController *tTabBarController = [TFAppDelegate mSlideNavigationController].topViewController;
     if ([tTabBarController.class isSubclassOfClass:[HomeController class]])
     {
