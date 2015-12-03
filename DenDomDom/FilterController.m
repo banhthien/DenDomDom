@@ -108,7 +108,12 @@
     UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 40)];
     rView.backgroundColor = RGB(235, 235, 235);
     UIImageView *tIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 7, 30, 27)];
-
+    UIImageView *tBottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_SIZE.width, 1)];
+    tBottomLine.image = [UIImage imageNamed:@"LineShadow_Bottom"];
+    
+    UIImageView *tTopLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 1)];
+    [tTopLine setBackgroundColor:RGB(230, 230, 230)];
+    
     UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(tIcon.frame.origin.x + tIcon.frame.size.width + 10, 5, SCREEN_SIZE.width - 20, 30)];
 
     tLabel.font = FONT_LIGHT(17);
@@ -130,6 +135,8 @@
         tIcon.image = [UIImage imageNamed:@"Diploma 2 Filled"];
         tLabel.text = @"Loại học bổng";
     }
+    [rView addSubview:tTopLine];
+    [rView addSubview:tBottomLine];
     [rView addSubview:tIcon];
     [rView addSubview:tLabel];
     
