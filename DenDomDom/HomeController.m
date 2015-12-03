@@ -38,14 +38,34 @@
     [TFAppDelegate.mSlideNavigationController setLeftMenuEnable:YES];
     [TFAppDelegate setNavigationTitle:@"Home" CanBack:NO ForController:self];
     // Do any additional setup after loading the view.
-    
+
     mSearchBarTop = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
     mSearchBarTop.showsCancelButton = NO;
+    [mSearchBarTop setBarTintColor:RGB(0, 175, 240)];
+//    [mSearchBarTop setTintColor:[UIColor orangeColor]];
     self.navigationItem.titleView = mSearchBarTop;
     [mSearchBarTop setPlaceholder:@"Bạn tìm gì vại"];
     mSearchBarTop.delegate = self;
+//    mSearchBarTop.showsCancelButton = YES;
+    
+    for (UIView *tView in [mSearchBarTop subviews])
+    {
+        for (UIView *tSubView in [tView subviews])
+        {
+            if ([tSubView.class isSubclassOfClass:[UITextField class]])
+            {
+                UIFont *tFont = FONT_LIGHT(17);
+                [(UITextField *)tSubView setFont:tFont];
+                [(UITextField *)tSubView setClipsToBounds:YES];
+                ((UITextField *)tSubView).layer.cornerRadius = mSearchBarTop.layer.frame.size.height/2 - 8;
+//                [(UITextField *)tSubView setBackgroundColor:RGB(44, 44, 44)];
+            }
+        }
+    }
+    
     [self setUpRightButton];
     
+
     
 }
 
@@ -103,7 +123,7 @@
 {
     UIButton *tRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [tRightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [tRightButton setImage:[UIImage imageNamed:@"Filter-100"] forState:UIControlStateNormal];
+    [tRightButton setImage:[UIImage imageNamed:@"Filter Filled"] forState:UIControlStateNormal];
     tRightButton.frame = CGRectMake(0, 0, 30, 30);
     [tRightButton addTarget:self action:@selector(actionFilterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tRightButton];

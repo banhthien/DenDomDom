@@ -54,7 +54,7 @@ NSString  *const SlideNavigationControllerDidReveal = @"SlideNavigationControlle
 
 #define MENU_SLIDE_ANIMATION_DURATION .3
 #define MENU_QUICK_SLIDE_ANIMATION_DURATION .18
-#define MENU_IMAGE @"menu-button"
+#define MENU_IMAGE @"Menu Filled"
 #define MENU_SHADOW_RADIUS 0.5
 #define MENU_SHADOW_OPACITY 1
 #define MENU_DEFAULT_SLIDE_OFFSET_NORMAL 0
@@ -474,7 +474,9 @@ static SlideNavigationController *singletonInstance;
 	else
 	{
 		UIImage *image = [UIImage imageNamed:MENU_IMAGE];
-        return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:selector];
+        UIBarButtonItem *tBar =[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:selector];
+        [tBar setTintColor:[UIColor whiteColor]];
+        return tBar;
 	}
 }
 
@@ -728,6 +730,7 @@ static SlideNavigationController *singletonInstance;
 					animated:(BOOL)animated
 {
 	if ([self shouldDisplayMenu:MenuLeft forViewController:viewController])
+
 		viewController.navigationItem.leftBarButtonItem = [self barButtonItemForMenu:MenuLeft];
 	
 	if ([self shouldDisplayMenu:MenuRight forViewController:viewController])

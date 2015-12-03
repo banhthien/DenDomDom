@@ -34,6 +34,8 @@
     NSString *mChildName;
     // OUTLET
     __weak IBOutlet UITableView *oTableView;
+    __weak IBOutlet UIButton *oCancelButton;
+    __weak IBOutlet UIButton *oFilterButton;
 }
 - (IBAction)actionFilterPress:(id)sender;
 @end
@@ -43,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [TFAppDelegate setNavigationTitle:@"Lọc" CanBack:YES ForController:self];
+    [self setUpRightButton];
     [self loadMenuArray];
 }
 
@@ -72,6 +75,21 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)setUpRightButton
+{
+    UIButton *tRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [tRightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [tRightButton setImage:[UIImage imageNamed:@"Refresh Filled"] forState:UIControlStateNormal];
+    tRightButton.frame = CGRectMake(0, 0, 30, 30);
+    [tRightButton addTarget:self action:@selector(actionRefeshButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tRightButton];
+}
+
+- (IBAction)actionRefeshButtonPressed:(id)sender
+{
+
+}
+
 #pragma mark - UITableView Datasource and Delegate
 //-------------------------------------
 
@@ -82,28 +100,37 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 30)];
-    rView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 40)];
+    rView.backgroundColor = RGB(235, 235, 235);
+    UIImageView *tIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 7, 30, 27)];
+
+    UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(tIcon.frame.origin.x + tIcon.frame.size.width + 10, 5, SCREEN_SIZE.width - 20, 30)];
+
+    tLabel.font = FONT_LIGHT(18);
     
-    UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, SCREEN_SIZE.width - 20, 30)];
-    tLabel.font = FONT_LIGHT(14);
+    
     if (section == 0)
     {
+        tIcon.image = [UIImage imageNamed:@"Student Filled"];
         tLabel.text = @"Đối tượng tham gia";
+        
     }
     else if (section == 1)
     {
+        tIcon.image = [UIImage imageNamed:@"Courses Filled"];
         tLabel.text = @"Trình độ học vấn";
     }
     else
     {
+        tIcon.image = [UIImage imageNamed:@"Diploma 2 Filled"];
         tLabel.text = @"Loại học bổng";
     }
+    [rView addSubview:tIcon];
     [rView addSubview:tLabel];
     
     return rView;
@@ -289,6 +316,10 @@
 
 }
 
+- (IBAction)actionCancelPress:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)actionFilterPress:(id)sender
 {

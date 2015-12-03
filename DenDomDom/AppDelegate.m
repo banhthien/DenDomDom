@@ -21,7 +21,7 @@
     [self initStructure];
     [self initFilterList];
     self.mFilterObject = [[FilterObject alloc] init];
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     // Override point for customization after application launch.
     self.mCurrentState = kFilterFilter;
     return YES;
@@ -117,15 +117,19 @@
 - (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController
 {
     sController.navigationItem.title = sTitle;
-    sController.navigationController.navigationBar.tintColor = RGB(66, 66, 66);
-    [sController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: RGB(66, 66, 66)}];
+    [sController.navigationController.navigationBar setBarTintColor:RGB(0, 175, 240)];
+    [sController.navigationController.navigationBar setTranslucent:NO];
+    [sController.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [sController.navigationItem.titleView setBackgroundColor:[UIColor whiteColor]];
     if (sIsCanBack)
     {
         UIButton *tLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [tLeftButton setImage:[UIImage imageNamed:@"ButtonBack"] forState:UIControlStateNormal];
+        [tLeftButton setImage:[UIImage imageNamed:@"Back"] forState:UIControlStateNormal];
         tLeftButton.frame = CGRectMake(0, 0, 25, 25);
         [tLeftButton addTarget:sController action:@selector(actionBackButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
         sController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tLeftButton];
+        [sController.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     }
     sController.navigationController.navigationBarHidden = NO;
 }

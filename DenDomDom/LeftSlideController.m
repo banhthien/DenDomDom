@@ -17,6 +17,7 @@
     // OUTLET
 
     
+    __weak IBOutlet UIImageView *oLogoApp;
     //PROPERTY
     NSMutableArray *mMenuArray;
 }
@@ -27,7 +28,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
+        view.backgroundColor=RGB(0, 175, 240);
+        [self.view addSubview:view];
+    }
     
+    oLogoApp.layer.cornerRadius = oLogoApp.frame.size.width/2;
     [self loadMenuArray];
 }
 
@@ -35,22 +43,22 @@
 {
     mMenuArray = [[NSMutableArray alloc] init];
     
-    NSDictionary *tDict = @{@"image": @"TempProduct2",
+    NSDictionary *tDict = @{@"image": @"Diploma 2 Filled",
                             @"name": @"Học bổng mới nhất"};
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"TempProduct3",
+    tDict = @{@"image": @"University Filled",
               @"name": @"Học bổng nổi bật"};
     
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"TempProduct4",
+    tDict = @{@"image": @"Courses Filled",
               @"name": @"Học bổng du học"};
     
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"TempProduct5",
+    tDict = @{@"image": @"Student Filled",
               @"name": @"Logout"};
     [mMenuArray addObject:tDict];
     
-    tDict = @{@"image": @"TempProduct6",
+    tDict = @{@"image": @"About Filled",
               @"name": @"Giới thiệu"};
     [mMenuArray addObject:tDict];
 }
@@ -74,7 +82,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 70;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

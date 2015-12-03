@@ -19,8 +19,6 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    oImageCell.clipsToBounds = YES;
-    oImageCell.layer.cornerRadius = oImageCell.frame.size.width/2;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
