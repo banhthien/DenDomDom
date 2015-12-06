@@ -65,9 +65,7 @@
     }
     
     [self setUpRightButton];
-    
 
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -164,29 +162,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_Home];
-//    [rCell setUpCellWithScholarship:mScholarshipArray[indexPath.row]];
-//    rCell.mDelegate = self;
+    [rCell setUpCellWithScholarship:mScholarshipArray[indexPath.row]];
+    rCell.mDelegate = self;
     return rCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    Scholarship *tScholar = mScholarshipArray[indexPath.row];
-//    return tScholar.mCellHeight;
-    return 320;
+    Scholarship *tScholar = mScholarshipArray[indexPath.row];
+    return tScholar.mCellHeight;
+//    return 320;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return mScholarshipArray.count;
-    return 5;
+    return mScholarshipArray.count;
+//    return 5;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-   [self performSegueWithIdentifier:kSegue_Push_Home_Detail sender:nil];
-//    [self performSegueWithIdentifier:kSegue_Push_Home_Detail sender:mScholarshipArray[indexPath.row]];
+//   [self performSegueWithIdentifier:kSegue_Push_Home_Detail sender:nil];
+    [self performSegueWithIdentifier:kSegue_Push_Home_Detail sender:mScholarshipArray[indexPath.row]];
 }
 #pragma mark - Navigation
 //----------------------------------

@@ -30,16 +30,20 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    [super setSelected:NO animated:animated];
 
     // Configure the view for the selected state
 }
 
-- (void)setUpWithSwitchPress:(NSInteger)sIndex withName:(NSString*)sName isSwithOn:(BOOL)sIsOn
+- (void)setUpWithSwitchPress:(NSInteger)sIndex withName:(NSString*)sName
 {
-    [oSwitch setOn:sIsOn];
     oPropertyName.text = sName;
     mIndex = sIndex;
+}
+
+- (void)setSwitch:(BOOL)isOn
+{
+    [oSwitch setOn:isOn animated:YES];
 }
 
 - (IBAction)actionSwitch:(id)sender {

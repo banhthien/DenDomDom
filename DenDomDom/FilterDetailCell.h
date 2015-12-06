@@ -18,5 +18,6 @@
 
 @property (nonatomic, weak) id<FilterDetailCellDelegate>mDelegate;
 
-- (void)setUpWithSwitchPress:(NSInteger)sIndex withName:(NSString*)sName isSwithOn:(BOOL)sIsOn;
+- (void)setUpWithSwitchPress:(NSInteger)sIndex withName:(NSString*)sName;
+- (void)setSwitch:(BOOL)isOn;
 @end

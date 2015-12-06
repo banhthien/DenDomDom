@@ -43,14 +43,15 @@
 {
     mMenuArray = [[NSMutableArray alloc] init];
     
-    NSDictionary *tDict = @{@"image": @"Diploma 2 Filled",
+    NSDictionary *tDict = @{@"image": @"University Filled",
                             @"name": @"Học bổng mới nhất"};
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"University Filled",
+    
+    tDict = @{@"image": @"Courses Filled",
               @"name": @"Học bổng nổi bật"};
     
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"Courses Filled",
+    tDict = @{@"image": @"Diploma 2 Filled",
               @"name": @"Học bổng du học"};
     
     [mMenuArray addObject:tDict];

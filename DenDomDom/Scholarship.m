@@ -349,7 +349,7 @@
         id objStuResidences = [tSpecifiDict objectForKey:kAPIDict_studentResidences];
         if (objStuResidences != [NSNull null])
         {
-            for (NSDictionary *tDict in objStuGender)
+            for (NSDictionary *tDict in objStuResidences)
             {
                 Province *tObj = [[Province alloc] initWithDictionary:tDict];
                 [self.mStuResidences addObject:tObj];

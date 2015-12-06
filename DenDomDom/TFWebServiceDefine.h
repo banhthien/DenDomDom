@@ -9,7 +9,7 @@
 #ifndef ShopOnline_TFWebServiceDefine_h
 #define ShopOnline_TFWebServiceDefine_h
 
-#define kAPI_Domain                         @"http://192.168.1.3:8082/dendomdom-webservice/"
+#define kAPI_Domain                         @"http://192.168.1.9:8082/dendomdom-webservice/"
 
 #define kAPI_IsDebug                        NO
 

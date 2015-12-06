@@ -13,11 +13,15 @@
 {
     // OUTLET
 
-    __weak IBOutlet UIImageView *oLogoImage;
     __weak IBOutlet UILabel *oNameLabel;
     __weak IBOutlet UIImageView *oImageView;
-    __weak IBOutlet UILabel *oInfoLabel;
+    __weak IBOutlet UILabel *oSchoolLabel;
     
+    __weak IBOutlet UILabel *oDayLabel;
+    __weak IBOutlet UILabel *oMouthLabel;
+    __weak IBOutlet UILabel *oYearLabel;
+    __weak IBOutlet UILabel *oMinValueLabel;
+    __weak IBOutlet UILabel *oMaxValueLabel;
     __weak IBOutlet UIView *oTimeView;
     __weak IBOutlet UIButton *oShareButton;
     // PROPERTY
@@ -31,8 +35,6 @@
 - (void)awakeFromNib {
     // Initialization code
     mIndex = 0;
-    oLogoImage.clipsToBounds = YES;
-    oLogoImage.layer.cornerRadius = oLogoImage.frame.size.width/2;
     oShareButton.layer.borderColor = [RGB(0, 175, 240) CGColor];
     oShareButton.layer.borderWidth = 1;
     oShareButton.layer.cornerRadius = 3;
@@ -49,7 +51,14 @@
 {
     Scholarship *tScholar = sScholarship;
     oNameLabel.text = tScholar.mName;
-    oInfoLabel.text = tScholar.mDescription;
+    oMinValueLabel.text = [NSString stringWithFormat:@"Số tiền nhỏ nhất %ld",(long)tScholar.mMinValue];
+    oMaxValueLabel.text = [NSString stringWithFormat:@"Số tiền lớn nhất %ld",(long)tScholar.mMaxValue];
+    
+    NSDate  *tDayEnd      = [NSDate dateWithTimeIntervalSince1970:tScholar.mDateEndRegister/1000];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:tDayEnd];
+    oYearLabel.text =[NSString stringWithFormat:@"%ld", (long)components.year];
+    oMouthLabel.text =[NSString stringWithFormat:@"%ld", (long)components.month];
+    oDayLabel.text =[NSString stringWithFormat:@"%ld", (long)components.day];
 }
 
 - (IBAction)actionSharePress:(id)sender

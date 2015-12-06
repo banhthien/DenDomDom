@@ -71,8 +71,8 @@
     // Do any additional setup after loading the view.
     [TFAppDelegate setNavigationTitle:@"Detail" CanBack:YES ForController:self];
     [TFAppDelegate.mSlideNavigationController setLeftMenuEnable:YES];
-//    [self setUpView];
-//    [self setUpArray];
+    [self setUpView];
+    [self setUpArray];
     [self setUpRightButton];
 }
 

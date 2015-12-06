@@ -19,6 +19,7 @@
 #import "ScholarshipType.h"
 #import "Talent.h"
 #import "FilterObject.h"
+#import "Scholarship.h"
 
 @interface FilterDetailController ()<UITableViewDataSource,UITableViewDelegate,FilterDetailCellDelegate,UISearchBarDelegate>
 {
@@ -26,8 +27,8 @@
     NSMutableArray *mFilterArray;
     NSMutableArray *mBackUpArray;
     UISearchBar *mSearchBarTop;
-    
-    
+    BOOL mIsRadioButton;
+    NSInteger mCurrentSelected;
     __weak IBOutlet UITableView *oTableView;
 }
 @end
@@ -40,7 +41,11 @@
     // Do any additional setup after loading the view.
     mFilterArray = [[NSMutableArray alloc] init];
     mBackUpArray = [[NSMutableArray alloc] init];
+   
     [self loadFilter];
+    
+    mIsRadioButton = NO;
+    mCurrentSelected = -1;
 }
 
 - (void)loadFilter
@@ -58,10 +63,11 @@
     {
         mSearchBarTop = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 44)];
         mSearchBarTop.showsCancelButton = NO;
+         [mSearchBarTop setBarTintColor:RGB(0, 175, 240)];
         self.navigationItem.titleView = mSearchBarTop;
         [mSearchBarTop setPlaceholder:@"Bạn ở đâu"];
         mSearchBarTop.delegate = self;
-        
+        mIsRadioButton = YES;
         for (UIView *tView in [mSearchBarTop subviews])
         {
             for (UIView *tSubView in [tView subviews])
@@ -70,6 +76,8 @@
                 {
                     UIFont *tFont = FONT_LIGHT(17);
                     [(UITextField *)tSubView setFont:tFont];
+                    [(UITextField *)tSubView setClipsToBounds:YES];
+                    ((UITextField *)tSubView).layer.cornerRadius = mSearchBarTop.layer.frame.size.height/2 - 8;
                 }
             }
         }
@@ -81,6 +89,7 @@
         }];
     }
     else if([self.mChild isEqual:kFilterType_Religion]){
+        mIsRadioButton = YES;
         [TFWebServiceManager getListReligion:kAPI_GetList withParam:nil success:^(id bProductArray) {
             mFilterArray = bProductArray;
             [oTableView reloadData];
@@ -125,6 +134,7 @@
     else if([self.mChild isEqual:kFilterType_Major]){
         mSearchBarTop = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 44)];
         mSearchBarTop.showsCancelButton = NO;
+        [mSearchBarTop setBarTintColor:RGB(0, 175, 240)];
         self.navigationItem.titleView = mSearchBarTop;
         [mSearchBarTop setPlaceholder:@"Bạn ở đâu"];
         mSearchBarTop.delegate = self;
@@ -137,6 +147,8 @@
                 {
                     UIFont *tFont = FONT_LIGHT(17);
                     [(UITextField *)tSubView setFont:tFont];
+                    [(UITextField *)tSubView setClipsToBounds:YES];
+                    ((UITextField *)tSubView).layer.cornerRadius = mSearchBarTop.layer.frame.size.height/2 - 8;
                 }
             }
         }
@@ -245,20 +257,40 @@
     
     if ([self.mChild isEqual:kFilterType_Gender]) {
         
-        if (sSwitch) {
+        Gender *genDer = mFilterArray[sIndex];
+        if ( TFAppDelegate.mFilterObject.mStuGender.mID == genDer.mID) {
+            mCurrentSelected = -1;
             TFAppDelegate.mFilterObject.mStuGender = nil;
+            return;
         }
-        else
-        {
-            Gender *genDer = mFilterArray[sIndex];
-            TFAppDelegate.mFilterObject.mStuGender = genDer;
+        
+        if (mCurrentSelected != -1) {
+            NSIndexPath *myIP = [NSIndexPath indexPathForRow:mCurrentSelected inSection:0] ;
+            UITableViewCell *cell = [oTableView cellForRowAtIndexPath:myIP];
+            [((FilterDetailCell*)cell) setSwitch:NO];
         }
-
+        
+        mCurrentSelected = sIndex;
+        TFAppDelegate.mFilterObject.mStuGender = genDer;
+        [oTableView reloadData];
     }
     
     else if([self.mChild isEqual:kFilterType_NoiO])
     {
         Country *country = mFilterArray[sIndex];
+        if ( TFAppDelegate.mFilterObject.mStuCitizenship.mID == country.mID) {
+            mCurrentSelected = -1;
+            TFAppDelegate.mFilterObject.mStuGender = nil;
+            return;
+        }
+        
+        if (mCurrentSelected != -1) {
+            NSIndexPath *myIP = [NSIndexPath indexPathForRow:mCurrentSelected inSection:0] ;
+            UITableViewCell *cell = [oTableView cellForRowAtIndexPath:myIP];
+            [((FilterDetailCell*)cell) setSwitch:NO];
+        }
+        
+        mCurrentSelected = sIndex;
         TFAppDelegate.mFilterObject.mStuCitizenship = country;
         [oTableView reloadData];
     }
@@ -350,72 +382,76 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FilterDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_FilterDetail];
-    BOOL tIsOn = NO;
+
     if ([self.mChild isEqual:kFilterType_Gender]) {
         Gender *genDer = mFilterArray[indexPath.row];
+        [rCell setUpWithSwitchPress:indexPath.row withName:genDer.mName];
         if (genDer.mID == TFAppDelegate.mFilterObject.mStuGender.mID) {
-            tIsOn = YES;
+            mCurrentSelected = indexPath.row;
+            [rCell setSwitch:YES];
         }
-        [rCell setUpWithSwitchPress:indexPath.row withName:genDer.mName isSwithOn:tIsOn];
+        else
+        {
+            [rCell setSwitch:NO];
+        }
+        
     }
     else if([self.mChild isEqual:kFilterType_NoiO])
     {
         Country *country = mFilterArray[indexPath.row];
+        [rCell setUpWithSwitchPress:indexPath.row withName:country.mName];
         if (country.mID == TFAppDelegate.mFilterObject.mStuCitizenship.mID) {
-            tIsOn = YES;
+            mCurrentSelected = indexPath.row;
+            [rCell setSwitch:YES];
         }
-        [rCell setUpWithSwitchPress:indexPath.row withName:country.mName isSwithOn:tIsOn];
+        else
+        {
+            [rCell setSwitch:NO];
+        }
+        
     }
     else if([self.mChild isEqual:kFilterType_Religion]){
         Religion *religion = mFilterArray[indexPath.row];
         if (religion.mID == TFAppDelegate.mFilterObject.mStuReligion.mID) {
-            tIsOn = YES;
+            [rCell setSwitch:YES];
         }
-        [rCell setUpWithSwitchPress:indexPath.row withName:religion.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:religion.mName];
     }
     else if([self.mChild isEqual:kFilterType_Disability]){
         Disability *disability = mFilterArray[indexPath.row];
-        [rCell setUpWithSwitchPress:indexPath.row withName:disability.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:disability.mName];
     }
     else if([self.mChild isEqual:kFilterType_TerminalIll]){
         TermialIll *terminalIll = mFilterArray[indexPath.row];
-        [rCell setUpWithSwitchPress:indexPath.row withName:terminalIll.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:terminalIll.mName];
     }
     else if([self.mChild isEqual:kFilterType_Family_Policy]){
         FamilyPolicy *family = mFilterArray[indexPath.row];
-        [rCell setUpWithSwitchPress:indexPath.row withName:family.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:family.mName];
     }
     else if([self.mChild isEqual:kFilterType_AcademicLevelNow]){
         AcademicLevel *academiclevel = mFilterArray[indexPath.row];
-        [rCell setUpWithSwitchPress:indexPath.row withName:academiclevel.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:academiclevel.mName];
     }
     else if([self.mChild isEqual:kFilterType_AcademicLevel]){
         AcademicLevel *academicLv = mFilterArray[indexPath.row];
-        [rCell setUpWithSwitchPress:indexPath.row withName:academicLv.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:academicLv.mName];
     }
     else if([self.mChild isEqual:kFilterType_Major]){
         Major *major = mFilterArray[indexPath.row];
-        for (Major *ta in TFAppDelegate.mFilterObject.mTalents) {
-            if (ta.mID == major.mID) {
-                tIsOn = YES;
-                break;
-            }
-        }
-        [rCell setUpWithSwitchPress:indexPath.row withName:major.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:major.mName];
     }
     else if([self.mChild isEqual:kFilterType_ScholarshipType]){
         ScholarshipType *scholarshipType = mFilterArray[indexPath.row];
-        [rCell setUpWithSwitchPress:indexPath.row withName:scholarshipType.mName isSwithOn:tIsOn];
+        [rCell setUpWithSwitchPress:indexPath.row withName:scholarshipType.mName];
     }
     else if([self.mChild isEqual:kFilterType_Talent]){
         Talent *talent = mFilterArray[indexPath.row];
-        for (Talent *ta in TFAppDelegate.mFilterObject.mTalents) {
-            if (ta.mID == talent.mID) {
-                tIsOn = YES;
-                break;
-            }
-        }
-        [rCell setUpWithSwitchPress:indexPath.row withName:talent.mName isSwithOn:tIsOn];
+//        if (talent.mID == TFAppDelegate.mFilterObject.mTalents.mID) {
+//            [rCell setSwitch:YES];
+//        }
+        [rCell setUpWithSwitchPress:indexPath.row withName:talent.mName];
+        [rCell setSwitch:YES];
     }
 
     rCell.mDelegate = self;
