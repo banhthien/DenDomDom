@@ -69,7 +69,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [TFAppDelegate setNavigationTitle:@"Detail" CanBack:YES ForController:self];
+    [TFAppDelegate setNavigationTitle:@"CHI TIẾT" CanBack:YES ForController:self];
     [TFAppDelegate.mSlideNavigationController setLeftMenuEnable:YES];
     [self setUpView];
     [self setUpArray];
@@ -335,30 +335,32 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 40)];
-    rView.backgroundColor = RGB(85, 140, 137);
+    UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 35)];
+    rView.backgroundColor = RGB(181, 235, 233);
+//    rView.backgroundColor = [UIColor whiteColor];
+    UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, SCREEN_SIZE.width - 20, 35)];
+    [tLabel setTextColor:RGB(46, 46, 46)];
+    tLabel.font = FONT_REGULAR(14);
+    UIImageView *tBottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 34, SCREEN_SIZE.width, 1)];
+    tBottomLine.image = [UIImage imageNamed:@"LineShadow_Bottom"];
 
-    UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, SCREEN_SIZE.width - 20, 40)];
-    [tLabel setTextColor:[UIColor whiteColor]];
-    tLabel.font = FONT_LIGHT(18);
-    
     if (section == 0)
     {
-        tLabel.text = @"Thông tin học bổng";
+        tLabel.text = @"THÔNG TIN HỌC BỔNG";
     }
     else if (section == 1)
     {
-        tLabel.text = @"Dành cho đối tượng";
+        tLabel.text = @"DÀNH CHO ĐỐI TƯỢNG";
     }
     else if (section == 2)
     {
-        tLabel.text = @"Cách thức tuyển";
+        tLabel.text = @"CÁCH THỨC TUYỂN";
     }
     else
     {
         tLabel.text = @"Comment";
     }
-    
+    [rView addSubview:tBottomLine];
     [rView addSubview:tLabel];
     
     return rView;
@@ -366,7 +368,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    return 35;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

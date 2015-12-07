@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface TermialIll : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
+#import "BaseObject.h"
+@interface TermialIll : BaseObject
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 

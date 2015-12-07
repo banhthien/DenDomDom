@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "Reachability.h"
 
+#import "BaseObject.h"
 #import "Scholarship.h"
 #import "Gender.h"
 #import "Religion.h"
@@ -25,6 +26,16 @@
 #import "User.h"
 
 @implementation TFWebServiceManager
+
++ (NSArray*)sortArray:(NSArray*)sSort
+{
+    NSArray *sortedArray = [sSort sortedArrayUsingComparator:^NSComparisonResult(BaseObject *p1, BaseObject *p2){
+        
+        return [[NSNumber numberWithInteger:p1.mID] compare:[NSNumber numberWithInteger:p2.mID]];
+        
+    }];
+    return sortedArray;
+}
 
 + (BOOL)checkConnection
 {
@@ -106,7 +117,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -150,7 +161,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -194,7 +205,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -239,7 +250,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -283,7 +294,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -327,7 +338,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -371,7 +382,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -415,7 +426,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -459,7 +470,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -500,10 +511,11 @@
                 for (NSDictionary *tDict in responseObject)
                 {
                     ScholarshipType *tObj = [[ScholarshipType alloc] initWithDictionary:tDict];
+
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -547,7 +559,7 @@
                     [tArray addObject:tObj];
                 }
                 
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else
@@ -597,7 +609,7 @@
                     
                        [tArray addObject:tObj];
                 }
-                bSuccess(tArray);
+                bSuccess([self sortArray:tArray]);
             }
             
             else

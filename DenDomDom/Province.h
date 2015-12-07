@@ -7,12 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
 @class Country;
 
-@interface Province : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
+@interface Province : BaseObject
 @property (nonatomic, strong) Country *mCountry;
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;

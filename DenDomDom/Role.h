@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
+@interface Role : BaseObject
 
-@interface Role : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
 @property (nonatomic, copy) NSString *mDescription;
 @property (nonatomic, copy) NSString *mCode;
 

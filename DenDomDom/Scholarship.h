@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "BaseObject.h"
 
 @class FormOfParticipation;
 @class User;
@@ -24,9 +24,8 @@
 @class Talent;
 @class Province;
 
-@interface Scholarship : NSObject
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
+@interface Scholarship : BaseObject
+
 @property (nonatomic, copy) NSString *mImagePath;
 @property (nonatomic, assign) double mCreateTime;
 @property (nonatomic, assign) double mDateEndRegister;

@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Gender : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
+#import "BaseObject.h"
+@interface Gender : BaseObject
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 

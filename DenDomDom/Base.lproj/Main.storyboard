@@ -645,6 +645,13 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q3Q-4M-GPP">
+                                                            <rect key="frame" x="0.0" y="79" width="320" height="1"/>
+                                                            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="v1U-lJ-lDM"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -652,8 +659,11 @@
                                                         <constraint firstAttribute="centerY" secondItem="AHS-64-yab" secondAttribute="centerY" id="CK3-Zn-Tbw"/>
                                                         <constraint firstAttribute="centerY" secondItem="xh4-P3-RXu" secondAttribute="centerY" id="OCW-CC-Bs1"/>
                                                         <constraint firstItem="AHS-64-yab" firstAttribute="top" secondItem="xh4-P3-RXu" secondAttribute="top" id="OhU-oB-yNn"/>
+                                                        <constraint firstItem="q3Q-4M-GPP" firstAttribute="leading" secondItem="oiU-R4-Ylt" secondAttribute="leading" id="QE5-4o-6yH"/>
                                                         <constraint firstAttribute="trailing" secondItem="AHS-64-yab" secondAttribute="trailing" constant="10" id="aHP-XO-w3H"/>
+                                                        <constraint firstAttribute="bottom" secondItem="q3Q-4M-GPP" secondAttribute="bottom" id="d52-fY-y8r"/>
                                                         <constraint firstItem="xh4-P3-RXu" firstAttribute="leading" secondItem="oiU-R4-Ylt" secondAttribute="leading" constant="5" id="fqq-3A-4Mo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="q3Q-4M-GPP" secondAttribute="trailing" id="hxw-Cu-SWM"/>
                                                         <constraint firstItem="AHS-64-yab" firstAttribute="leading" secondItem="xh4-P3-RXu" secondAttribute="trailing" constant="5" id="izQ-lv-ddD"/>
                                                         <constraint firstItem="xh4-P3-RXu" firstAttribute="top" secondItem="oiU-R4-Ylt" secondAttribute="top" constant="10" id="tMO-Nj-bWk"/>
                                                     </constraints>
@@ -672,6 +682,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="oiU-R4-Ylt" secondAttribute="bottom" id="xzZ-EZ-78T"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.83529411764705885" green="0.96078431372549022" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="oInfoLabel" destination="AHS-64-yab" id="byS-e5-Sgq"/>
                                             <outlet property="oNameLabel" destination="xh4-P3-RXu" id="Vqd-hD-JeM"/>
@@ -803,7 +814,7 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="res-x9-5q3">
                                                     <rect key="frame" x="0.0" y="50" width="320" height="1"/>
-                                                    <color key="backgroundColor" red="0.33333333333333331" green="0.5490196078431373" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.74117647060000003" green="0.76470588240000004" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="glX-vg-DBX"/>
                                                     </constraints>

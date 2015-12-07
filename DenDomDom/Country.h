@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
+@interface Country : BaseObject
 
-@interface Country : NSObject
 
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
 @property (nonatomic, copy) NSString *code;
 
 

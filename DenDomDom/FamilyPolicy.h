@@ -7,10 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface FamilyPolicy : NSObject
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
+#import "BaseObject.h"
+@interface FamilyPolicy : BaseObject
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 
