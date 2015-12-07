@@ -35,7 +35,7 @@
 - (void)awakeFromNib {
     // Initialization code
     mIndex = 0;
-    oShareButton.layer.borderColor = [RGB(0, 175, 240) CGColor];
+    oShareButton.layer.borderColor = [RGB(217, 133, 59) CGColor];
     oShareButton.layer.borderWidth = 1;
     oShareButton.layer.cornerRadius = 3;
     oTimeView.layer.cornerRadius = 3;

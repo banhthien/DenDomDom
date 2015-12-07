@@ -25,5 +25,6 @@
 - (void)showInfoWithController:(UIViewController*)sRoot;
 - (void)hideInfoWithController:(UIViewController*)sRoot;
 
+- (void)setOffSetLeftSlideWithDuration:(float)sDuration WithWidth:(float)sWidth;
 @end
 

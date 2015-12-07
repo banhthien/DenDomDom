@@ -336,8 +336,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 40)];
-    rView.backgroundColor = RGB(27, 154, 196);
-    
+    rView.backgroundColor = RGB(85, 140, 137);
+
     UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, SCREEN_SIZE.width - 20, 40)];
     [tLabel setTextColor:[UIColor whiteColor]];
     tLabel.font = FONT_LIGHT(18);
@@ -371,32 +371,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *tName;
-    NSString *tInfo;
+    NSString *tName = @"name";
+    NSString *tInfo = @"info";
     if (indexPath.section == 0)
     {
         InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
-        NSDictionary *tDict =mBaseInfo[indexPath.row];
-        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
-        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
+//        NSDictionary *tDict =mBaseInfo[indexPath.row];
+//        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
+//        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
         [rCell setUpCellWithName:tName withInfo:tInfo];
         return rCell;
     }
     else if (indexPath.section == 1)
     {
         InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
-        NSDictionary *tDict =mStuInfo[indexPath.row];
-        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
-        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
+//        NSDictionary *tDict =mStuInfo[indexPath.row];
+//        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
+//        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
         [rCell setUpCellWithName:tName withInfo:tInfo];
         return rCell;
     }
     else if (indexPath.section == 2)
     {
         InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
-        NSDictionary *tDict =mFormInfo[indexPath.row];
-        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
-        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
+//        NSDictionary *tDict =mFormInfo[indexPath.row];
+//        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
+//        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
         [rCell setUpCellWithName:tName withInfo:tInfo];
         return rCell;
     }
@@ -434,22 +434,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-    {
-        return mBaseInfo.count;
-    }
-    else if (section == 1)
-    {
-        return mStuInfo.count;
-    }
-    else if (section == 2)
-    {
-        return mFormInfo.count;
-    }
-    else
-    {
+//    if (section == 0)
+//    {
+//        return mBaseInfo.count;
+//    }
+//    else if (section == 1)
+//    {
+//        return mStuInfo.count;
+//    }
+//    else if (section == 2)
+//    {
+//        return mFormInfo.count;
+//    }
+//    else
+//    {
         return 5;
-    }
+//    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

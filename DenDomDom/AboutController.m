@@ -64,7 +64,7 @@
     }];
 }
 
-- (void)hideInfo
+- (void)hideInfo:(UIViewController *)sRootView
 {
     [UIView animateWithDuration:0.4 animations:^{
         
@@ -75,11 +75,11 @@
         
     } completion:^(BOOL finished) {
         
-        [self.mDelegate tfAboutController_DidHiden:mRootView];
+        [self.mDelegate tfAboutController_DidHiden:sRootView];
     }];
 }
 - (IBAction)actionHideAbout:(id)sender
 {
-    [self hideInfo];
+    [self hideInfo:mRootView];
 }
 @end

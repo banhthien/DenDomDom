@@ -119,7 +119,7 @@
 - (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController
 {
     sController.navigationItem.title = sTitle;
-    [sController.navigationController.navigationBar setBarTintColor:RGB(0, 175, 240)];
+    [sController.navigationController.navigationBar setBarTintColor:RGB(116, 175, 173)];
     [sController.navigationController.navigationBar setTranslucent:NO];
     [sController.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [sController.navigationItem.titleView setBackgroundColor:[UIColor whiteColor]];
@@ -142,16 +142,16 @@
     AboutController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_AboutController];
     tView.mDelegate = self;
     [tView setProductViewController:sRoot];
-    [self.window.rootViewController.view addSubview:tView.view];
-    [self.window.rootViewController addChildViewController:tView];
-    [tView didMoveToParentViewController:self.window.rootViewController];
+    [self.mSlideNavigationController.leftMenu.view addSubview:tView.view];
+    [self.mSlideNavigationController.leftMenu addChildViewController:tView];
+    [tView didMoveToParentViewController:self.mSlideNavigationController.leftMenu];
     [tView showInfo];
 }
 
 - (void)hideInfoWithController:(UIViewController*)sRoot
 {
     AboutController *tView;
-    for (UIViewController *tController in self.window.rootViewController.childViewControllers)
+    for (UIViewController *tController in self.mSlideNavigationController.leftMenu.childViewControllers)
     {
         if ([tController.class isSubclassOfClass:[AboutController class]])
         {
@@ -161,7 +161,7 @@
     }
     if (tView)
     {
-        [tView hideInfo];
+        [tView hideInfo:sRoot];
     }
 }
 
@@ -169,7 +169,7 @@
 {
     AboutController *tView;
     
-    for (UIViewController *tController in TFAppDelegate.window.rootViewController.childViewControllers)
+    for (UIViewController *tController in self.mSlideNavigationController.leftMenu.childViewControllers)
     {
         if ([tController.class isSubclassOfClass:[AboutController class]])
         {
@@ -188,6 +188,10 @@
     
 }
 
+- (void)setOffSetLeftSlideWithDuration:(float)sDuration WithWidth:(float)sWidth;
+{
+    [self.mSlideNavigationController extendLeftMenuWithDuration:sDuration WithWidth:sWidth];
+}
 
 - (IBAction)actionBackButtonPressed:(id)sender
 {

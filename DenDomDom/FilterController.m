@@ -106,7 +106,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *rView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 40)];
-    rView.backgroundColor = RGB(235, 235, 235);
+    rView.backgroundColor = RGB(85, 140, 137);
     UIImageView *tIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 7, 30, 27)];
     UIImageView *tBottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_SIZE.width, 1)];
     tBottomLine.image = [UIImage imageNamed:@"LineShadow_Bottom"];
@@ -115,24 +115,24 @@
     [tTopLine setBackgroundColor:RGB(230, 230, 230)];
     
     UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(tIcon.frame.origin.x + tIcon.frame.size.width + 10, 5, SCREEN_SIZE.width - 20, 30)];
-
+    [tLabel setTextColor:[UIColor whiteColor]];
     tLabel.font = FONT_LIGHT(17);
     
     
     if (section == 0)
     {
-        tIcon.image = [UIImage imageNamed:@"Student Filled"];
+        tIcon.image = [UIImage imageNamed:@"StudentWhite"];
         tLabel.text = @"Đối tượng tham gia";
         
     }
     else if (section == 1)
     {
-        tIcon.image = [UIImage imageNamed:@"Courses Filled"];
+        tIcon.image = [UIImage imageNamed:@"StudentWhite"];
         tLabel.text = @"Trình độ học vấn";
     }
     else
     {
-        tIcon.image = [UIImage imageNamed:@"Diploma 2 Filled"];
+        tIcon.image = [UIImage imageNamed:@"StudentWhite"];
         tLabel.text = @"Loại học bổng";
     }
     [rView addSubview:tTopLine];
