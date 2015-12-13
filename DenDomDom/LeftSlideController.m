@@ -31,7 +31,7 @@
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
         UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
-        view.backgroundColor=RGB(0, 175, 240);
+        view.backgroundColor=RGB(116, 175, 173);
         [self.view addSubview:view];
     }
     
@@ -43,15 +43,15 @@
 {
     mMenuArray = [[NSMutableArray alloc] init];
     
-    NSDictionary *tDict = @{@"image": @"University Filled",
+    NSDictionary *tDict = @{@"image": @"Courses Filled",
                             @"name": @"Học bổng mới nhất"};
     [mMenuArray addObject:tDict];
     
-    tDict = @{@"image": @"Courses Filled",
+    tDict = @{@"image": @"Diploma 2 Filled",
               @"name": @"Học bổng nổi bật"};
     
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"Diploma 2 Filled",
+    tDict = @{@"image": @"University Filled",
               @"name": @"Học bổng du học"};
     
     [mMenuArray addObject:tDict];
@@ -95,26 +95,25 @@
 {
     
     if (indexPath.row == 4) {
+        [TFAppDelegate setOffSetLeftSlideWithDuration:0.3 WithWidth:0];
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        [TFAppDelegate showInfoWithController:TFAppDelegate.mSlideNavigationController.leftMenu];
+    }
+    else
+    {
         UIViewController *tTabBarController = [TFAppDelegate mSlideNavigationController].topViewController;
         if ([tTabBarController.class isSubclassOfClass:[HomeController class]])
         {
             [TFAppDelegate.mSlideNavigationController closeMenuWithCompletion:^{
                 
+                [((HomeController*)tTabBarController) loadHome:indexPath.row];
                 
             }];
         }
-        [TFAppDelegate showInfoWithController:self];
     }
-    
-    UIViewController *tTabBarController = [TFAppDelegate mSlideNavigationController].topViewController;
-    if ([tTabBarController.class isSubclassOfClass:[HomeController class]])
-    {
-        [TFAppDelegate.mSlideNavigationController closeMenuWithCompletion:^{
-            
-             [((HomeController*)tTabBarController) loadHome:indexPath.row];
-            
-        }];
-    }
+   
 }
 /*
 #pragma mark - Navigation

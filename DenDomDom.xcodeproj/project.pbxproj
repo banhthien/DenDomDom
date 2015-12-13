@@ -79,6 +79,7 @@
 		6CFC268C1BE1097A00E65498 /* LeftSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFC268B1BE1097A00E65498 /* LeftSlideCell.m */; };
 		6CFE8EF61BE5BA3600E0DF90 /* FilterDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFE8EF51BE5BA3600E0DF90 /* FilterDetailController.m */; };
 		6CFE8EFA1BE5C12600E0DF90 /* FilterDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFE8EF91BE5C12600E0DF90 /* FilterDetailCell.m */; };
+		B67D98C61C1551A6009F0627 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B67D98C51C1551A6009F0627 /* BaseObject.m */; };
 		B6A6CAFB1C103A69006E21E5 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6CAFA1C103A69006E21E5 /* AboutController.m */; };
 /* End PBXBuildFile section */
 
@@ -241,6 +242,8 @@
 		6CFE8EF51BE5BA3600E0DF90 /* FilterDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDetailController.m; sourceTree = "<group>"; };
 		6CFE8EF81BE5C12600E0DF90 /* FilterDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDetailCell.h; sourceTree = "<group>"; };
 		6CFE8EF91BE5C12600E0DF90 /* FilterDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDetailCell.m; sourceTree = "<group>"; };
+		B67D98C41C1551A6009F0627 /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
+		B67D98C51C1551A6009F0627 /* BaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseObject.m; sourceTree = "<group>"; };
 		B6A6CAF91C103A69006E21E5 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		B6A6CAFA1C103A69006E21E5 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -355,6 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				6CD8B0841C0045BE00A4D708 /* Utility */,
+				B67D98C41C1551A6009F0627 /* BaseObject.h */,
+				B67D98C51C1551A6009F0627 /* BaseObject.m */,
 				6C8208041BF77BBC00CB6063 /* Scholarship.h */,
 				6C8208051BF77BBC00CB6063 /* Scholarship.m */,
 				6C8208071BF77D1200CB6063 /* FormOfParticipation.h */,
@@ -855,6 +860,7 @@
 				6C61CA491BDFCDED007A7110 /* ScholarshipDetailController.m in Sources */,
 				6CF1CC051BF8641C00EF7363 /* UserGroup.m in Sources */,
 				6C8207F71BF76A0100CB6063 /* AFNetworkReachabilityManager.m in Sources */,
+				B67D98C61C1551A6009F0627 /* BaseObject.m in Sources */,
 				6CDFD7471C0B130200303456 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6C61CA091BDFB6CF007A7110 /* main.m in Sources */,
 				6CA491BC1BE2596B002CEE21 /* FilterController.m in Sources */,
@@ -946,7 +952,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -983,7 +989,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -994,6 +1000,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DenDomDom/Share/Library/Facebook",
@@ -1010,6 +1017,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DenDomDom/Share/Library/Facebook",

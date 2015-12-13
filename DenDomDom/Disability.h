@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
+@interface Disability : BaseObject
 
-@interface Disability : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 

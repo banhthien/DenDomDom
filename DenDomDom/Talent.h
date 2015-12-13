@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Talent : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
+#import "BaseObject.h"
+@interface Talent : BaseObject
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 

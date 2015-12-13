@@ -11,6 +11,8 @@
 
 @interface TFWebServiceManager : NSObject
 
++ (NSArray*)sortArray:(NSArray*)sSort;
+
 + (BOOL)checkConnection;
 
 + (void) getScholarshipArrayWithURL:(NSString *)nameMethod withID:(NSInteger)sURLParams withParams:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail;

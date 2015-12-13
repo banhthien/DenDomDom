@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
+@interface Sponsor : BaseObject
 
-@interface Sponsor : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
 @property (nonatomic, copy) NSString *mAddress;
 @property (nonatomic, copy) NSString *mPhone;
 @property (nonatomic, copy) NSString *mWebsite;

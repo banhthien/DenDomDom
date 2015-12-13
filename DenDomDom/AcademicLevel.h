@@ -7,14 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
 
-
-@interface AcademicLevel : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
-
-- (id)init;
+@interface AcademicLevel : BaseObject
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 
 @end

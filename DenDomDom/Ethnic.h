@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
+@interface Ethnic : BaseObject
 
-@interface Ethnic : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
 
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 

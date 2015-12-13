@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseObject.h"
+@interface User : BaseObject
 
-@interface User : NSObject
-
-@property (nonatomic, assign) NSInteger mID;
-@property (nonatomic, copy) NSString *mName;
 @property (nonatomic, copy) NSString *mMail;
 - (instancetype)initWithDictionary:(NSDictionary *)sDict;
 

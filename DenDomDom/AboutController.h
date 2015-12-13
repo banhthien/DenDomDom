@@ -17,6 +17,6 @@
 -(void)setProductViewController:(UIViewController *)sRootView;
 
 - (void)showInfo;
-- (void)hideInfo;
+- (void)hideInfo:(UIViewController *)sRootView;
 
 @end
