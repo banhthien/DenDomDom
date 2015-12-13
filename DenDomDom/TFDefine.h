@@ -57,7 +57,7 @@
 #pragma mark - StoryboardId
 //----------------------------------
 #define kStoryboardId_ChatController                            @"kStoryboardId_ChatController"
-
+#define kStoryboardID_CommentController                         @"kStoryboardID_CommentController"
 
 #pragma mark - Cell Id
 //------------------------
@@ -93,7 +93,8 @@
 #pragma mark - TypeID
 //------------------------------------
 #define kFilterNew                                              1
-#define kFilterFilter                                           5
+#define kFilterFilterHave                                       5
+#define kFilterFilterNo                                         4
 #define kFilterNoiBat                                           2
 #define kFilterDuHoc                                            3
 #pragma mark - TextFieldValidation

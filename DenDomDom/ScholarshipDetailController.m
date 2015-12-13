@@ -8,6 +8,7 @@
 
 #import "ScholarshipDetailController.h"
 #import "UIImageView+AFNetworking.h"
+#import "CommentController.h"
 
 #import "TFDefine.h"
 #import "AppDelegate.h"
@@ -88,7 +89,10 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
-    
+    UIStoryboard *tStoryboard = kStoryboard_Main;
+    CommentController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_CommentController];
+
+    [self.navigationController pushViewController:tView animated:YES];
 }
 
 - (void)setUpView

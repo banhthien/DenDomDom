@@ -79,9 +79,20 @@
         mScholarshipArray = [[NSMutableArray alloc] init];
     }
     TFAppDelegate.mCurrentState = menuLoad;
-    
-    if (TFAppDelegate.mCurrentState == kFilterFilter) {
+    if (TFAppDelegate.mCurrentState == kFilterFilterHave) {
         NSDictionary *tParam = [TFAppDelegate.mFilterObject getFilterDict];
+        
+        [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListBy withParam:tParam success:^(id bProductArray) {
+            mScholarshipArray = bProductArray;
+            [oTableView reloadData];
+        } failure:^(NSError *bError, NSString *bMessage) {
+            
+        }];
+        
+    }
+    else if (TFAppDelegate.mCurrentState == kFilterFilterNo) {
+        FilterObject *tFIlter =[[FilterObject alloc] init];
+        NSDictionary *tParam = [tFIlter getFilterDict];
         
         [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListBy withParam:tParam success:^(id bProductArray) {
             mScholarshipArray = bProductArray;

@@ -1207,6 +1207,40 @@
             </objects>
             <point key="canvasLocation" x="1594" y="1080"/>
         </scene>
+        <!--Comment Controller-->
+        <scene sceneID="CxT-Nc-oDW">
+            <objects>
+                <viewController storyboardIdentifier="kStoryboardID_CommentController" id="xGJ-He-ptw" customClass="CommentController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="akK-HJ-nuL"/>
+                        <viewControllerLayoutGuide type="bottom" id="dmh-Jd-PlK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7bM-eb-hrl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ee8-0L-vfF">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ee8-0L-vfF" firstAttribute="top" secondItem="akK-HJ-nuL" secondAttribute="bottom" id="CbY-P2-x4H"/>
+                            <constraint firstAttribute="trailing" secondItem="Ee8-0L-vfF" secondAttribute="trailing" id="JaL-gJ-cPl"/>
+                            <constraint firstAttribute="bottom" secondItem="Ee8-0L-vfF" secondAttribute="bottom" id="NTJ-XV-mRk"/>
+                            <constraint firstItem="Ee8-0L-vfF" firstAttribute="leading" secondItem="7bM-eb-hrl" secondAttribute="leading" id="dCf-VR-MCg"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="oCommentView" destination="Ee8-0L-vfF" id="ebe-9x-hJC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ajb-Pv-Dl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="1804"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ButtonAlbum" width="25" height="25"/>

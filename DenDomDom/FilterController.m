@@ -72,6 +72,7 @@
 }
 - (IBAction)actionBackButtonPressed:(id)sender
 {
+    TFAppDelegate.mCurrentState = kFilterFilterNo;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -325,12 +326,13 @@
 
 - (IBAction)actionCancelPress:(id)sender
 {
+    TFAppDelegate.mCurrentState = kFilterFilterNo;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)actionFilterPress:(id)sender
 {
-    TFAppDelegate.mCurrentState = kFilterFilter;
+    TFAppDelegate.mCurrentState = kFilterFilterHave;
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

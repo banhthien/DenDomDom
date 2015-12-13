@@ -25,7 +25,7 @@
     self.mFilterObject = [[FilterObject alloc] init];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     // Override point for customization after application launch.
-    self.mCurrentState = kFilterFilter;
+    self.mCurrentState = kFilterFilterNo;
     return YES;
 }
 

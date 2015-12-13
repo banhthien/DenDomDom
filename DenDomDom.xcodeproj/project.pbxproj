@@ -32,6 +32,7 @@
 		6C8208091BF77D1200CB6063 /* FormOfParticipation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8208081BF77D1200CB6063 /* FormOfParticipation.m */; };
 		6CA491BC1BE2596B002CEE21 /* FilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA491BB1BE2596B002CEE21 /* FilterController.m */; };
 		6CA491C91BE2636F002CEE21 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA491C81BE2636F002CEE21 /* FilterCell.m */; };
+		6CCB10301C1D31AB0049F97F /* CommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCB102F1C1D31AB0049F97F /* CommentController.m */; };
 		6CCBABAD1BFF22A900BB6880 /* Major.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCBABAC1BFF22A900BB6880 /* Major.m */; };
 		6CD8B0871C0045F600A4D708 /* FilterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD8B0861C0045F600A4D708 /* FilterObject.m */; };
 		6CDFD7411C0B130200303456 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDFD7311C0B130200303456 /* AFNetworkActivityIndicatorManager.m */; };
@@ -145,6 +146,8 @@
 		6CA491BB1BE2596B002CEE21 /* FilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterController.m; sourceTree = "<group>"; };
 		6CA491C71BE2636F002CEE21 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		6CA491C81BE2636F002CEE21 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		6CCB102E1C1D31AB0049F97F /* CommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentController.h; sourceTree = "<group>"; };
+		6CCB102F1C1D31AB0049F97F /* CommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentController.m; sourceTree = "<group>"; };
 		6CCBABAB1BFF22A900BB6880 /* Major.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Major.h; sourceTree = "<group>"; };
 		6CCBABAC1BFF22A900BB6880 /* Major.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Major.m; sourceTree = "<group>"; };
 		6CD8B0851C0045F600A4D708 /* FilterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterObject.h; sourceTree = "<group>"; };
@@ -337,6 +340,7 @@
 		6C61CA2E1BDFB708007A7110 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6CCB102D1C1D31970049F97F /* Comment */,
 				B6A6CAF81C103A52006E21E5 /* About */,
 				6CFE8EF31BE5B9A800E0DF90 /* FilterDetail */,
 				6CA491B91BE25935002CEE21 /* Filter */,
@@ -503,6 +507,15 @@
 				6CA491C81BE2636F002CEE21 /* FilterCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		6CCB102D1C1D31970049F97F /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				6CCB102E1C1D31AB0049F97F /* CommentController.h */,
+				6CCB102F1C1D31AB0049F97F /* CommentController.m */,
+			);
+			name = Comment;
 			sourceTree = "<group>";
 		};
 		6CD8B0841C0045BE00A4D708 /* Utility */ = {
@@ -804,6 +817,7 @@
 				6CF1CBD51BF82E8C00EF7363 /* AcademicLevelDetail.m in Sources */,
 				6C8207F91BF76A0100CB6063 /* AFURLConnectionOperation.m in Sources */,
 				6CF1CBF91BF85ED700EF7363 /* School.m in Sources */,
+				6CCB10301C1D31AB0049F97F /* CommentController.m in Sources */,
 				6C61CA4D1BDFCF7A007A7110 /* CommentCell.m in Sources */,
 				6C61CA441BDFBDA8007A7110 /* HomeCell.m in Sources */,
 				6CCBABAD1BFF22A900BB6880 /* Major.m in Sources */,

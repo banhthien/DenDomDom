@@ -64,7 +64,7 @@
                 bSuccess(tUserObj);
             }
             else
-            {
+            { 
                 bFail(nil, @"Error API Facebook: Can not init user object from dictionary");
             }
         }
