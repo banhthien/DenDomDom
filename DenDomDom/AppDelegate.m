@@ -11,7 +11,9 @@
 #import "FilterObject.h"
 #import "AboutController.h"
 #import "HomeController.h"
+#import "MBProgressHUD.h"
 
+#import "Country.h"
 @interface AppDelegate ()<AboutControllerDelegate>
 
 @end
@@ -22,10 +24,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initStructure];
     [self initFilterList];
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     self.mFilterObject = [[FilterObject alloc] init];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     // Override point for customization after application launch.
     self.mCurrentState = kFilterFilterNo;
+    self.Country = nil;
     return YES;
 }
 
@@ -45,6 +50,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -101,6 +107,14 @@
     
     [self.mListFilter addObject:arrTypeScholar];
 
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
 }
 
 - (void)initStructure
@@ -186,6 +200,16 @@
     }
     [TFAppDelegate.mSlideNavigationController openLeftMenu];
     
+}
+
+- (void)showConnectionInView:(UIView *)sView
+{
+    [MBProgressHUD showHUDAddedTo:sView animated:YES];
+}
+
+- (void)hideConnectionInView:(UIView *)sView
+{
+    [MBProgressHUD hideHUDForView:sView animated:YES];
 }
 
 - (void)setOffSetLeftSlideWithDuration:(float)sDuration WithWidth:(float)sWidth;

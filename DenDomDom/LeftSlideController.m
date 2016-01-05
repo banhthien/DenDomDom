@@ -21,6 +21,7 @@
     //PROPERTY
     NSMutableArray *mMenuArray;
 }
+
 @end
 
 @implementation LeftSlideController
@@ -34,8 +35,8 @@
         view.backgroundColor=RGB(116, 175, 173);
         [self.view addSubview:view];
     }
-    
-
+    oLogoApp.clipsToBounds = YES;
+    oLogoApp.layer.cornerRadius = 10;
     [self loadMenuArray];
 }
 
@@ -55,9 +56,9 @@
               @"name": @"Học bổng du học"};
     
     [mMenuArray addObject:tDict];
-    tDict = @{@"image": @"Student Filled",
-              @"name": @"Logout"};
-    [mMenuArray addObject:tDict];
+//    tDict = @{@"image": @"Student Filled",
+//              @"name": @"Logout"};
+//    [mMenuArray addObject:tDict];
     
     tDict = @{@"image": @"About Filled",
               @"name": @"Giới thiệu"};
@@ -94,7 +95,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         [TFAppDelegate setOffSetLeftSlideWithDuration:0.3 WithWidth:0];
         [UIView animateWithDuration:0.3f animations:^{
             [self.view layoutIfNeeded];
@@ -107,7 +108,7 @@
         if ([tTabBarController.class isSubclassOfClass:[HomeController class]])
         {
             [TFAppDelegate.mSlideNavigationController closeMenuWithCompletion:^{
-                
+                TFAppDelegate.Country = nil;
                 [((HomeController*)tTabBarController) loadHome:indexPath.row];
                 
             }];

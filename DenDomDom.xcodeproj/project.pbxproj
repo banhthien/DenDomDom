@@ -32,8 +32,18 @@
 		6C8208091BF77D1200CB6063 /* FormOfParticipation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8208081BF77D1200CB6063 /* FormOfParticipation.m */; };
 		6CA491BC1BE2596B002CEE21 /* FilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA491BB1BE2596B002CEE21 /* FilterController.m */; };
 		6CA491C91BE2636F002CEE21 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA491C81BE2636F002CEE21 /* FilterCell.m */; };
+		6CC2A99B1C1D8C28005A0997 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6CC2A9971C1D8C28005A0997 /* LICENSE */; };
+		6CC2A99C1C1D8C28005A0997 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2A9991C1D8C28005A0997 /* MBProgressHUD.m */; };
+		6CC2A99D1C1D8C28005A0997 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2A99A1C1D8C28005A0997 /* README.mdown */; };
+		6CC2A9A21C1D8DA6005A0997 /* TFNoDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2A9A01C1D8DA6005A0997 /* TFNoDataTableViewCell.m */; };
+		6CC2A9A31C1D8DA6005A0997 /* TFNoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CC2A9A11C1D8DA6005A0997 /* TFNoDataTableViewCell.xib */; };
+		6CC2D8A61C393462003F05D9 /* CountryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2D8A51C393462003F05D9 /* CountryController.m */; };
+		6CC2D8AA1C3934A8003F05D9 /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2D8A91C3934A8003F05D9 /* CountryCell.m */; };
 		6CCB10301C1D31AB0049F97F /* CommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCB102F1C1D31AB0049F97F /* CommentController.m */; };
 		6CCBABAD1BFF22A900BB6880 /* Major.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCBABAC1BFF22A900BB6880 /* Major.m */; };
+		6CD5C68F1C32B8920011D00B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD5C68C1C32B8920011D00B /* FBSDKCoreKit.framework */; };
+		6CD5C6901C32B8920011D00B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD5C68D1C32B8920011D00B /* FBSDKLoginKit.framework */; };
+		6CD5C6911C32B8920011D00B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD5C68E1C32B8920011D00B /* FBSDKShareKit.framework */; };
 		6CD8B0871C0045F600A4D708 /* FilterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD8B0861C0045F600A4D708 /* FilterObject.m */; };
 		6CDFD7411C0B130200303456 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDFD7311C0B130200303456 /* AFNetworkActivityIndicatorManager.m */; };
 		6CDFD7421C0B130200303456 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDFD7331C0B130200303456 /* UIActivityIndicatorView+AFNetworking.m */; };
@@ -63,8 +73,6 @@
 		6CF1CC021BF863BE00EF7363 /* TermialIll.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1CC011BF863BE00EF7363 /* TermialIll.m */; };
 		6CF1CC051BF8641C00EF7363 /* UserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1CC041BF8641C00EF7363 /* UserGroup.m */; };
 		6CF1CC081BF8654900EF7363 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1CC071BF8654900EF7363 /* User.m */; };
-		6CFC26751BE1048000E65498 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFC26561BE1048000E65498 /* FBSDKCoreKit.framework */; };
-		6CFC26761BE1048000E65498 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFC26571BE1048000E65498 /* FBSDKLoginKit.framework */; };
 		6CFC26771BE1048000E65498 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFC265A1BE1048000E65498 /* UIImageEffects.m */; };
 		6CFC26781BE1048000E65498 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFC265F1BE1048000E65498 /* SlideNavigationContorllerAnimatorFade.m */; };
 		6CFC26791BE1048000E65498 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFC26611BE1048000E65498 /* SlideNavigationContorllerAnimatorScale.m */; };
@@ -147,10 +155,24 @@
 		6CA491BB1BE2596B002CEE21 /* FilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterController.m; sourceTree = "<group>"; };
 		6CA491C71BE2636F002CEE21 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		6CA491C81BE2636F002CEE21 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		6CC2A9971C1D8C28005A0997 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6CC2A9981C1D8C28005A0997 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		6CC2A9991C1D8C28005A0997 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		6CC2A99A1C1D8C28005A0997 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		6CC2A99F1C1D8DA6005A0997 /* TFNoDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFNoDataTableViewCell.h; sourceTree = "<group>"; };
+		6CC2A9A01C1D8DA6005A0997 /* TFNoDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFNoDataTableViewCell.m; sourceTree = "<group>"; };
+		6CC2A9A11C1D8DA6005A0997 /* TFNoDataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TFNoDataTableViewCell.xib; sourceTree = "<group>"; };
+		6CC2D8A41C393462003F05D9 /* CountryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryController.h; sourceTree = "<group>"; };
+		6CC2D8A51C393462003F05D9 /* CountryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryController.m; sourceTree = "<group>"; };
+		6CC2D8A81C3934A8003F05D9 /* CountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCell.h; sourceTree = "<group>"; };
+		6CC2D8A91C3934A8003F05D9 /* CountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCell.m; sourceTree = "<group>"; };
 		6CCB102E1C1D31AB0049F97F /* CommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentController.h; sourceTree = "<group>"; };
 		6CCB102F1C1D31AB0049F97F /* CommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentController.m; sourceTree = "<group>"; };
 		6CCBABAB1BFF22A900BB6880 /* Major.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Major.h; sourceTree = "<group>"; };
 		6CCBABAC1BFF22A900BB6880 /* Major.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Major.m; sourceTree = "<group>"; };
+		6CD5C68C1C32B8920011D00B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		6CD5C68D1C32B8920011D00B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		6CD5C68E1C32B8920011D00B /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		6CD8B0851C0045F600A4D708 /* FilterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterObject.h; sourceTree = "<group>"; };
 		6CD8B0861C0045F600A4D708 /* FilterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterObject.m; sourceTree = "<group>"; };
 		6CDFD7301C0B130200303456 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
@@ -210,8 +232,6 @@
 		6CF1CC041BF8641C00EF7363 /* UserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGroup.m; sourceTree = "<group>"; };
 		6CF1CC061BF8654900EF7363 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		6CF1CC071BF8654900EF7363 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		6CFC26561BE1048000E65498 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		6CFC26571BE1048000E65498 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		6CFC26591BE1048000E65498 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		6CFC265A1BE1048000E65498 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		6CFC265D1BE1048000E65498 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
@@ -253,8 +273,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CFC26761BE1048000E65498 /* FBSDKLoginKit.framework in Frameworks */,
-				6CFC26751BE1048000E65498 /* FBSDKCoreKit.framework in Frameworks */,
+				6CD5C6901C32B8920011D00B /* FBSDKLoginKit.framework in Frameworks */,
+				6CD5C68F1C32B8920011D00B /* FBSDKCoreKit.framework in Frameworks */,
+				6CD5C6911C32B8920011D00B /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +310,7 @@
 		6C61CA051BDFB6CE007A7110 /* DenDomDom */ = {
 			isa = PBXGroup;
 			children = (
+				6CD5C68B1C32B87F0011D00B /* Frameworks */,
 				6CDFD7491C0B13BC00303456 /* FaceBook */,
 				6C8207FD1BF76A2600CB6063 /* WebService */,
 				6C61CA2D1BDFB700007A7110 /* Class */,
@@ -343,6 +365,8 @@
 		6C61CA2E1BDFB708007A7110 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6CC2D8A31C39342F003F05D9 /* ChooseCountry */,
+				6CC2A99E1C1D8D9A005A0997 /* NoDataCell */,
 				6CCB102D1C1D31970049F97F /* Comment */,
 				B6A6CAF81C103A52006E21E5 /* About */,
 				6CFE8EF31BE5B9A800E0DF90 /* FilterDetail */,
@@ -514,6 +538,46 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		6CC2A9961C1D8C28005A0997 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6CC2A9971C1D8C28005A0997 /* LICENSE */,
+				6CC2A9981C1D8C28005A0997 /* MBProgressHUD.h */,
+				6CC2A9991C1D8C28005A0997 /* MBProgressHUD.m */,
+				6CC2A99A1C1D8C28005A0997 /* README.mdown */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		6CC2A99E1C1D8D9A005A0997 /* NoDataCell */ = {
+			isa = PBXGroup;
+			children = (
+				6CC2A99F1C1D8DA6005A0997 /* TFNoDataTableViewCell.h */,
+				6CC2A9A01C1D8DA6005A0997 /* TFNoDataTableViewCell.m */,
+				6CC2A9A11C1D8DA6005A0997 /* TFNoDataTableViewCell.xib */,
+			);
+			name = NoDataCell;
+			sourceTree = "<group>";
+		};
+		6CC2D8A31C39342F003F05D9 /* ChooseCountry */ = {
+			isa = PBXGroup;
+			children = (
+				6CC2D8A71C393495003F05D9 /* View */,
+				6CC2D8A41C393462003F05D9 /* CountryController.h */,
+				6CC2D8A51C393462003F05D9 /* CountryController.m */,
+			);
+			name = ChooseCountry;
+			sourceTree = "<group>";
+		};
+		6CC2D8A71C393495003F05D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6CC2D8A81C3934A8003F05D9 /* CountryCell.h */,
+				6CC2D8A91C3934A8003F05D9 /* CountryCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6CCB102D1C1D31970049F97F /* Comment */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +585,16 @@
 				6CCB102F1C1D31AB0049F97F /* CommentController.m */,
 			);
 			name = Comment;
+			sourceTree = "<group>";
+		};
+		6CD5C68B1C32B87F0011D00B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CD5C68C1C32B8920011D00B /* FBSDKCoreKit.framework */,
+				6CD5C68D1C32B8920011D00B /* FBSDKLoginKit.framework */,
+				6CD5C68E1C32B8920011D00B /* FBSDKShareKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6CD8B0841C0045BE00A4D708 /* Utility */ = {
@@ -576,8 +650,8 @@
 		6CFC26541BE1048000E65498 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6CC2A9961C1D8C28005A0997 /* MBProgressHUD */,
 				6C8207E01BF76A0100CB6063 /* AFNetworking */,
-				6CFC26551BE1048000E65498 /* Facebook */,
 				6CFC26581BE1048000E65498 /* ImageEffect */,
 				6CFC265B1BE1048000E65498 /* iOS-Slide-Menu */,
 				6CFC26701BE1048000E65498 /* Reachability */,
@@ -585,15 +659,6 @@
 				6CFC26741BE1048000E65498 /* TextFieldValidator.m */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		6CFC26551BE1048000E65498 /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-				6CFC26561BE1048000E65498 /* FBSDKCoreKit.framework */,
-				6CFC26571BE1048000E65498 /* FBSDKLoginKit.framework */,
-			);
-			path = Facebook;
 			sourceTree = "<group>";
 		};
 		6CFC26581BE1048000E65498 /* ImageEffect */ = {
@@ -756,6 +821,7 @@
 				TargetAttributes = {
 					6C61CA021BDFB6CE007A7110 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = NM96BS4UX3;
 					};
 					6C61CA1B1BDFB6CF007A7110 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -787,8 +853,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CC2A9A31C1D8DA6005A0997 /* TFNoDataTableViewCell.xib in Resources */,
 				6C61CA121BDFB6CF007A7110 /* Main.storyboard in Resources */,
 				6C61CA171BDFB6CF007A7110 /* LaunchScreen.xib in Resources */,
+				6CC2A99B1C1D8C28005A0997 /* LICENSE in Resources */,
 				6C61CA141BDFB6CF007A7110 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -816,6 +884,7 @@
 				6CF1CBFC1BF8631300EF7363 /* Sponsor.m in Sources */,
 				6CFC267A1BE1048000E65498 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				6CDFD7451C0B130200303456 /* UIImageView+AFNetworking.m in Sources */,
+				6CC2A99D1C1D8C28005A0997 /* README.mdown in Sources */,
 				6CF1CBF61BF85E8400EF7363 /* ScholarshipType.m in Sources */,
 				6C8208091BF77D1200CB6063 /* FormOfParticipation.m in Sources */,
 				6CDFD7431C0B130200303456 /* UIAlertView+AFNetworking.m in Sources */,
@@ -832,17 +901,20 @@
 				6CF1CC021BF863BE00EF7363 /* TermialIll.m in Sources */,
 				6CF1CBE41BF84F7400EF7363 /* FamilyPolicy.m in Sources */,
 				6C8208061BF77BBC00CB6063 /* Scholarship.m in Sources */,
+				6CC2A99C1C1D8C28005A0997 /* MBProgressHUD.m in Sources */,
 				6CDFD7421C0B130200303456 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6CF1CBFF1BF8637100EF7363 /* Talent.m in Sources */,
 				6CDFD7411C0B130200303456 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6CDFD7441C0B130200303456 /* UIButton+AFNetworking.m in Sources */,
 				6CFC26791BE1048000E65498 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				6CC2D8AA1C3934A8003F05D9 /* CountryCell.m in Sources */,
 				6CA491C91BE2636F002CEE21 /* FilterCell.m in Sources */,
 				6CF1CBD81BF82EBE00EF7363 /* AcademicLevel.m in Sources */,
 				6CF1CBF01BF857A000EF7363 /* Religion.m in Sources */,
 				6CFC26801BE1048000E65498 /* MFSideMenuShadow.m in Sources */,
 				6CD8B0871C0045F600A4D708 /* FilterObject.m in Sources */,
 				6CFC26771BE1048000E65498 /* UIImageEffects.m in Sources */,
+				6CC2D8A61C393462003F05D9 /* CountryController.m in Sources */,
 				6CF1CBDB1BF8373100EF7363 /* Country.m in Sources */,
 				6CDFD7481C0B130200303456 /* UIWebView+AFNetworking.m in Sources */,
 				6CDFD74C1C0B13C700303456 /* TFFacebookManager.m in Sources */,
@@ -851,6 +923,7 @@
 				6CF1CC081BF8654900EF7363 /* User.m in Sources */,
 				6C8207F51BF76A0100CB6063 /* AFHTTPRequestOperationManager.m in Sources */,
 				6C8207F41BF76A0100CB6063 /* AFHTTPRequestOperation.m in Sources */,
+				6CC2A9A21C1D8DA6005A0997 /* TFNoDataTableViewCell.m in Sources */,
 				6CFC26821BE1048000E65498 /* TextFieldValidator.m in Sources */,
 				6CDFD7461C0B130200303456 /* UIProgressView+AFNetworking.m in Sources */,
 				6CFE8EF61BE5BA3600E0DF90 /* FilterDetailController.m in Sources */,
@@ -1000,16 +1073,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DenDomDom/Share/Library/Facebook",
+					"$(PROJECT_DIR)/DenDomDom",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = DenDomDom/PrefixHeader.pch;
 				INFOPLIST_FILE = DenDomDom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Diem.DenDomDom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1017,16 +1096,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DenDomDom/Share/Library/Facebook",
+					"$(PROJECT_DIR)/DenDomDom",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = DenDomDom/PrefixHeader.pch;
 				INFOPLIST_FILE = DenDomDom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Diem.DenDomDom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

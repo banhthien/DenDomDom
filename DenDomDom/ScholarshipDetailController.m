@@ -59,10 +59,12 @@
     NSMutableArray *mStuInfo;
     NSMutableArray *mFormInfo;
     
+    __weak IBOutlet UIButton *oCommentButton;
     __weak IBOutlet UILabel *oNameLabel;
     __weak IBOutlet UILabel *oSchoolLabel;
     __weak IBOutlet UIImageView *oImageView;
 }
+@property (nonatomic, strong) FBSDKLoginManager *mFacebookLoginManager;
 @end
 
 @implementation ScholarshipDetailController
@@ -89,10 +91,13 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
-    UIStoryboard *tStoryboard = kStoryboard_Main;
-    CommentController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_CommentController];
-
-    [self.navigationController pushViewController:tView animated:YES];
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    Scholarship *tScho = self.mScholarObj;
+    content.contentURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://dendomdom-hadiem.rhcloud.com/all?id=%i",(int)tScho.mID]];
+    
+    [FBSDKShareDialog showFromViewController:self
+                                 withContent:content
+                                    delegate:nil];
 }
 
 - (void)setUpView
@@ -101,6 +106,8 @@
     oSchoolLabel.text = self.mScholarObj.mSchool.mName;
     NSString *tImageName = self.mScholarObj.mImagePath;
     [oImageView setImageWithURL:[NSURL URLWithString:tImageName]];
+    oCommentButton.clipsToBounds= YES;
+    oCommentButton.layer.cornerRadius = 5;
 }
 
 - (void)setUpArray
@@ -334,7 +341,7 @@
 //-------------------------------------
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -356,13 +363,9 @@
     {
         tLabel.text = @"DÀNH CHO ĐỐI TƯỢNG";
     }
-    else if (section == 2)
-    {
-        tLabel.text = @"CÁCH THỨC TUYỂN";
-    }
     else
     {
-        tLabel.text = @"Comment";
+        tLabel.text = @"CÁCH THỨC TUYỂN";
     }
     [rView addSubview:tBottomLine];
     [rView addSubview:tLabel];
@@ -382,33 +385,28 @@
     if (indexPath.section == 0)
     {
         InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
-//        NSDictionary *tDict =mBaseInfo[indexPath.row];
-//        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
-//        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
+        NSDictionary *tDict =mBaseInfo[indexPath.row];
+        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
+        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
         [rCell setUpCellWithName:tName withInfo:tInfo];
         return rCell;
     }
     else if (indexPath.section == 1)
     {
         InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
-//        NSDictionary *tDict =mStuInfo[indexPath.row];
-//        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
-//        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
-        [rCell setUpCellWithName:tName withInfo:tInfo];
-        return rCell;
-    }
-    else if (indexPath.section == 2)
-    {
-        InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
-//        NSDictionary *tDict =mFormInfo[indexPath.row];
-//        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
-//        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
+        NSDictionary *tDict =mStuInfo[indexPath.row];
+        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
+        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
         [rCell setUpCellWithName:tName withInfo:tInfo];
         return rCell;
     }
     else
     {
-        CommentCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_Comment];
+        InfoDetailCell *rCell = [tableView dequeueReusableCellWithIdentifier:kCellId_InfoDetail];
+        NSDictionary *tDict =mFormInfo[indexPath.row];
+        tName = [TFUtil checkStringFromDictValue:tDict[kName]];
+        tInfo = [TFUtil checkStringFromDictValue:tDict[kInfo]];
+        [rCell setUpCellWithName:tName withInfo:tInfo];
         return rCell;
     }
     
@@ -428,10 +426,6 @@
 
         return 60;
     }
-    else if (indexPath.section == 2)
-    {
-        return 60;
-    }
     else
     {
         return 60;
@@ -440,22 +434,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (section == 0)
-//    {
-//        return mBaseInfo.count;
-//    }
-//    else if (section == 1)
-//    {
-//        return mStuInfo.count;
-//    }
-//    else if (section == 2)
-//    {
-//        return mFormInfo.count;
-//    }
-//    else
-//    {
-        return 5;
-//    }
+    if (section == 0)
+    {
+        return mBaseInfo.count;
+    }
+    else if (section == 1)
+    {
+        return mStuInfo.count;
+    }
+    else
+    {
+        return mFormInfo.count;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -472,5 +462,35 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)actionCommentPress:(id)sender
+{
+    if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"public_profile"]) {
+        UIStoryboard *tStoryboard = kStoryboard_Main;
+        CommentController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_CommentController];
+        tView.mID = self.mScholarObj.mID;
+        [self.navigationController pushViewController:tView animated:YES];
+        // TODO: publish content.
+    } else {
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        
+        [login
+         logInWithReadPermissions: @[@"public_profile"]
+         fromViewController:self
+         handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+             if (error) {
+                 NSLog(@"Process error, %@", error);
+             } else if (result.isCancelled) {
+                 NSLog(@"Cancelled");
+             } else {
+                 UIStoryboard *tStoryboard = kStoryboard_Main;
+                 CommentController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_CommentController];
+                 tView.mID = self.mScholarObj.mID;
+                 [self.navigationController pushViewController:tView animated:YES];
+                 NSLog(@"Logged in");
+             }
+         }];
+    }
+}
 
 @end

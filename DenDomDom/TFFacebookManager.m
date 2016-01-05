@@ -9,7 +9,6 @@
 #import "TFFacebookManager.h"
 
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #define kLink_Facebook_Image                @"https://graph.facebook.com/%@/picture?type=large"
 @interface TFFacebookManager ()

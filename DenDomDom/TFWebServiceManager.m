@@ -591,8 +591,11 @@
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     tRequestManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [tRequestManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Scholarship, nameMethod];
+    
+    
     
     [tRequestManager POST:url parameters:sParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

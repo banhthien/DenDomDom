@@ -58,7 +58,7 @@
 //----------------------------------
 #define kStoryboardId_ChatController                            @"kStoryboardId_ChatController"
 #define kStoryboardID_CommentController                         @"kStoryboardID_CommentController"
-
+#define kStoryboardID_CountryController                         @"kStoryboardID_CountryController"
 #pragma mark - Cell Id
 //------------------------
 #define kCellId_Home                                            @"kCellId_Home"
@@ -67,7 +67,7 @@
 #define kCellId_Filter                                          @"kCellId_Filter"
 #define kCellId_FilterDetail                                    @"kCellId_FilterDetail"
 #define kCellId_InfoDetail                                      @"kCellId_InfoDetail"
-
+#define kCellID_NoDataTable                                     @"kCellID_NoDataTable"      
 #pragma mark - font name
 //----------------------------------
 #define kFont_System_Normal                                     @"HelveticaNeue"
@@ -84,7 +84,7 @@
 #define kFilterType_Disability                                  @"Khuyết tật"
 #define kFilterType_TerminalIll                                 @"Tình trạng đặc biệt"
 #define kFilterType_Family_Policy                               @"Gia đình chính sách"
-#define kFilterType_AcademicLevelNow                              @"Trình độ hiện tại"
+#define kFilterType_AcademicLevelNow                            @"Trình độ hiện tại"
 #define kFilterType_AcademicLevel                               @"Trình độ của học bổng"
 #define kFilterType_Major                                       @"Chuyên ngành"
 #define kFilterType_ScholarshipType                             @"Loại học bổng"
@@ -92,11 +92,13 @@
 
 #pragma mark - TypeID
 //------------------------------------
-#define kFilterNew                                              1
+#define kFilterNew                                              0
 #define kFilterFilterHave                                       5
+#define kFilterFilterCountry                                    6
 #define kFilterFilterNo                                         4
-#define kFilterNoiBat                                           2
-#define kFilterDuHoc                                            3
+#define kFilterNoiBat                                           1
+#define kFilterDuHoc                                            2
+#define kFilterSearch                                           3
 #pragma mark - TextFieldValidation
 //------------------------------------
 #define kRegex_Email                                            @"[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"

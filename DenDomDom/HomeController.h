@@ -11,4 +11,5 @@
 @interface HomeController : UIViewController
 
 - (void)loadHome:(NSInteger)menuLoad;
+
 @end

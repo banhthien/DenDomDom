@@ -9,7 +9,7 @@
 #ifndef ShopOnline_TFWebServiceDefine_h
 #define ShopOnline_TFWebServiceDefine_h
 
-#define kAPI_Domain                         @"http://192.168.1.9:8082/dendomdom-webservice/"
+#define kAPI_Domain                         @"http://192.168.1.6:8082/dendomdom-webservice/"
 
 #define kAPI_IsDebug                        NO
 
@@ -41,6 +41,7 @@
 #define kAPI_ListByCountryWithNoSchool      @"listByCountryWithNoSchool/"
 #define kAPI_GetListWithPageSize            @"getListWithPageSize/"
 #define kAPI_ListTopView                    @"listTopView/"
+#define kAPI_GetListByKeyWord               @"getListWithKeyWord/"
 
 
 

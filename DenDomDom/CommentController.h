@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CommentController : UIViewController
-
+@property (assign, nonatomic) NSInteger mID;
 @end

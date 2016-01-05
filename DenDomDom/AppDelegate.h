@@ -11,6 +11,7 @@
 #import "LeftSlideController.h"
 
 @class FilterObject;
+@class Country;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -20,10 +21,14 @@
 @property (strong, nonatomic) NSMutableArray *mListFilter;
 @property (assign, nonatomic) NSInteger mCurrentState;
 @property (strong, nonatomic) FilterObject *mFilterObject;
+@property (strong, nonatomic) Country *Country;
 - (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController;
 
 - (void)showInfoWithController:(UIViewController*)sRoot;
 - (void)hideInfoWithController:(UIViewController*)sRoot;
+
+- (void)showConnectionInView:(UIView *)sView;
+- (void)hideConnectionInView:(UIView *)sView;
 
 - (void)setOffSetLeftSlideWithDuration:(float)sDuration WithWidth:(float)sWidth;
 @end
