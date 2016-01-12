@@ -16,17 +16,18 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (assign, nonatomic) BOOL mCanRefesh;
 @property (strong, nonatomic) SlideNavigationController *mSlideNavigationController;
 @property (strong, nonatomic) LeftSlideController *mLeftSlide;
 @property (strong, nonatomic) NSMutableArray *mListFilter;
 @property (assign, nonatomic) NSInteger mCurrentState;
 @property (strong, nonatomic) FilterObject *mFilterObject;
-@property (strong, nonatomic) Country *Country;
+@property (strong, nonatomic) Country *mCountry;
 - (void)setNavigationTitle:(NSString *)sTitle CanBack:(BOOL)sIsCanBack ForController:(UIViewController *)sController;
 
 - (void)showInfoWithController:(UIViewController*)sRoot;
 - (void)hideInfoWithController:(UIViewController*)sRoot;
-
+- (void)showMessage:(NSString *)sMessage withTitle:(NSString*)sTitle;
 - (void)showConnectionInView:(UIView *)sView;
 - (void)hideConnectionInView:(UIView *)sView;
 

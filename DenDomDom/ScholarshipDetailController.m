@@ -36,6 +36,7 @@
 #import "CommentCell.h"
 
 #define kName               @"kName"
+#define kHeight               @"kHeight"
 #define kInfo               @"kInfo"
 
 #define kChuyenNganh        @"Chuyên ngành"
@@ -63,6 +64,7 @@
     __weak IBOutlet UILabel *oNameLabel;
     __weak IBOutlet UILabel *oSchoolLabel;
     __weak IBOutlet UIImageView *oImageView;
+    __weak IBOutlet UILabel *oCountryButton;
 }
 @property (nonatomic, strong) FBSDKLoginManager *mFacebookLoginManager;
 @end
@@ -100,6 +102,19 @@
                                     delegate:nil];
 }
 
+- (float)caculatorHeight:(NSString*)text
+{
+    UIFont *font;
+   
+    font = FONT_REGULAR(14);
+    
+    NSDictionary *attributes = @{NSFontAttributeName: font};
+    CGRect tRectLabel = [text boundingRectWithSize:CGSizeMake(SCREEN_SIZE.width - SCREEN_SIZE.width/4 - 15, 999)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    return tRectLabel.size.height + 25;
+   
+}
+
 - (void)setUpView
 {
     oNameLabel.text = self.mScholarObj.mName;
@@ -108,6 +123,14 @@
     [oImageView setImageWithURL:[NSURL URLWithString:tImageName]];
     oCommentButton.clipsToBounds= YES;
     oCommentButton.layer.cornerRadius = 5;
+    if (self.mScholarObj.mCountry.mID == 0) {
+        oCountryButton.text = @"";
+    }
+    else
+    {
+        oCountryButton.text = [NSString stringWithFormat:@"Quốc gia: %@",self.mScholarObj.mCountry.mName];
+    }
+    
 }
 
 - (void)setUpArray
@@ -128,8 +151,10 @@
                 tInfo = tMajor.mName;
             }
         }
+        
          NSDictionary *tDict = @{kName : kChuyenNganh,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                 kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mBaseInfo addObject:tDict];
     }
     
@@ -145,7 +170,8 @@
             }
         }
         NSDictionary *tDict = @{kName : kTrinhDo,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mBaseInfo addObject:tDict];
     }
     
@@ -163,7 +189,8 @@
             
         }
          NSDictionary *tDict = @{kName : kGioiTinh,
-                  kInfo : tInfo};
+                                 kInfo : tInfo,
+                                 kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -180,7 +207,8 @@
             
         }
         NSDictionary *tDict = @{kName : kTrinhDo,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -197,7 +225,8 @@
             
         }
         NSDictionary *tDict = @{kName : kCongDan,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -214,7 +243,8 @@
             
         }
         NSDictionary *tDict = @{kName : kTonGiao,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -231,7 +261,8 @@
             
         }
         NSDictionary *tDict = @{kName : kGiaDinh,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -248,7 +279,8 @@
             
         }
         NSDictionary *tDict = @{kName : kCutru,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -265,7 +297,8 @@
             
         }
         NSDictionary *tDict = @{kName : kKhuyetTat,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -282,7 +315,8 @@
             
         }
         NSDictionary *tDict = @{kName : kDanToc,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -299,7 +333,8 @@
             
         }
         NSDictionary *tDict = @{kName : kSucKhoe,
-                                kInfo : tInfo};
+                                kInfo : tInfo,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:tInfo]]};
         [mStuInfo addObject:tDict];
     }
     
@@ -321,7 +356,8 @@
     if (self.mScholarObj.mSupportDescription.length > 0) {
         
         NSDictionary *tDict = @{kName : kHoTro,
-                                kInfo : self.mScholarObj.mSupportDescription};
+                                kInfo : self.mScholarObj.mSupportDescription,
+                                kHeight : [NSNumber numberWithFloat:[self caculatorHeight:self.mScholarObj.mSupportDescription]]};
         [mFormInfo addObject:tDict];
     }
    
@@ -416,20 +452,22 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *tDict;
     if (indexPath.section == 0)
     {
-
-        return 60;
+        tDict = mBaseInfo[indexPath.row];
+        
     }
     else if (indexPath.section == 1)
     {
-
-        return 60;
+        tDict =mStuInfo[indexPath.row];
     }
     else
     {
-        return 60;
+        tDict =mFormInfo[indexPath.row];
+
     }
+    return [tDict[kHeight] floatValue];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -471,25 +509,13 @@
         tView.mID = self.mScholarObj.mID;
         [self.navigationController pushViewController:tView animated:YES];
         // TODO: publish content.
-    } else {
-        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-        
-        [login
-         logInWithReadPermissions: @[@"public_profile"]
-         fromViewController:self
-         handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-             if (error) {
-                 NSLog(@"Process error, %@", error);
-             } else if (result.isCancelled) {
-                 NSLog(@"Cancelled");
-             } else {
-                 UIStoryboard *tStoryboard = kStoryboard_Main;
-                 CommentController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_CommentController];
-                 tView.mID = self.mScholarObj.mID;
-                 [self.navigationController pushViewController:tView animated:YES];
-                 NSLog(@"Logged in");
-             }
-         }];
+    }
+    else
+    {
+        UIStoryboard *tStoryboard = kStoryboard_Main;
+        CommentController *tView = [tStoryboard instantiateViewControllerWithIdentifier:kStoryboardID_CommentController];
+        tView.mID = self.mScholarObj.mID;
+        [self.navigationController pushViewController:tView animated:YES];
     }
 }
 

@@ -35,7 +35,12 @@
     [oTableView registerNib:[UINib nibWithNibName:@"TFNoDataTableViewCell" bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:kCellID_NoDataTable];
     mCountryList = [[NSMutableArray alloc] init];
+    
+    Country *tCountry = [[Country alloc] init];
+    [mCountryList addObject:tCountry];
+    
     mBackupList = [[NSMutableArray alloc] init];
+    [mBackupList addObject:tCountry];
     [self setUpSearch];
     [self loadList];
     // Do any additional setup after loading the view.
@@ -70,8 +75,13 @@
     mIsRefesh = YES;
     [TFAppDelegate showConnectionInView:self.view];
     [TFWebServiceManager getListCountry:kAPI_GetList withParam:nil success:^(id bProductArray) {
-        mCountryList = bProductArray;
-        mBackupList = bProductArray;
+        if (bProductArray == nil) {
+            
+            return ;
+        }
+        [mCountryList addObjectsFromArray:bProductArray];
+        [mBackupList addObjectsFromArray:bProductArray];
+        
         [TFAppDelegate hideConnectionInView:self.view];
         mIsRefesh = YES;
         [oTableView reloadData];
@@ -88,6 +98,7 @@
 
 - (IBAction)actionBackButtonPressed:(id)sender
 {
+    TFAppDelegate.mCanRefesh = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 /*
@@ -140,8 +151,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Country *country = mCountryList[indexPath.row];
-    TFAppDelegate.Country = country;
-    TFAppDelegate.mCurrentState = kFilterFilterCountry;
+    TFAppDelegate.mCountry = country;
+    TFAppDelegate.mCanRefesh = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - UISearchBarDelegate

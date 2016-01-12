@@ -44,11 +44,14 @@
     self.mScholarAcaDetail = [[AcademicLevelDetail alloc] init];
     self.mScholarType = [[ScholarshipType alloc] init];
     
+    self.mScholarshipCountry = [[Country alloc] init];
+    
     self.mStuDisabilities = [[NSMutableArray alloc] init];
     self.mStuTerminalIllnesses = [[NSMutableArray alloc] init];
     self.mFamilyPolicy = [[NSMutableArray alloc] init];
     self.mScholarMajors = [[NSMutableArray alloc] init];
     self.mTalents = [[NSMutableArray alloc] init];
+    
     self.mKeyword = @"";
     return self;
 }
@@ -56,7 +59,8 @@
 - (NSDictionary*)getFilterDict
 {
     NSDictionary *tDict = @{@"pageNumber": [NSNumber numberWithInteger:self.pageNumber],
-                            @"size": [NSNumber numberWithInteger:self.size]};
+                            @"size": [NSNumber numberWithInteger:self.size],
+                            @"scholarCountry":[NSNumber numberWithInteger:self.mScholarshipCountry.mID]};
     
     NSDictionary *tParams = @{@"stuGender":[NSNumber numberWithInteger:self.mStuGender.mID],@"stuCitizenship":[NSNumber numberWithInteger:self.mStuCitizenship.mID],@"stuResidenceCity":[NSNumber numberWithInteger:self.mStuResidenceCity.mID],@"stuResidenceProvince":[NSNumber numberWithInteger:self.mStuResidenceProvince.mID],@"stuReligion":[NSNumber numberWithInteger:self.mStuReligion.mID],@"stuAca":[NSNumber numberWithInteger:self.mStuAca.mID],@"stuAcaDetail":[NSNumber numberWithInteger:self.mStuAcaDetail.mID],@"scholarAca":[NSNumber numberWithInteger:self.mScholarAca.mID],@"scholarAcaDetails":[NSNumber numberWithInteger:self.mScholarAcaDetail.mID],@"scholarType":[NSNumber numberWithInteger:self.mScholarType.mID],@"keyword":self.mKeyword};
     

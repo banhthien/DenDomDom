@@ -98,7 +98,6 @@
 #define kFilterFilterNo                                         4
 #define kFilterNoiBat                                           1
 #define kFilterDuHoc                                            2
-#define kFilterSearch                                           3
 #pragma mark - TextFieldValidation
 //------------------------------------
 #define kRegex_Email                                            @"[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"

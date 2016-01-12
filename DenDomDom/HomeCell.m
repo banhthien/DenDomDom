@@ -8,6 +8,8 @@
 
 #import "HomeCell.h"
 #import "Scholarship.h"
+#import "Country.h"
+#import "School.h"
 
 @interface HomeCell()
 {
@@ -17,6 +19,7 @@
     __weak IBOutlet UIImageView *oImageView;
     __weak IBOutlet UILabel *oSchoolLabel;
     
+    __weak IBOutlet UILabel *oCountryLabel;
     __weak IBOutlet UILabel *oDayLabel;
     __weak IBOutlet UILabel *oMouthLabel;
     __weak IBOutlet UILabel *oYearLabel;
@@ -49,7 +52,25 @@
 
 - (void)setUpCellWithScholarship:(id)sScholarship
 {
+
     Scholarship *tScholar = sScholarship;
+    
+    if (tScholar.mCountry.mID != 0) {
+        oCountryLabel.text = [NSString stringWithFormat:@"Quốc gia: %@",tScholar.mCountry.mName];
+    }
+    else
+    {
+        oCountryLabel.text = @"";
+    }
+    if (tScholar.mSchool.mID) {
+        oSchoolLabel.text = [NSString stringWithFormat:@"Trường học: %@",tScholar.mSchool.mName ];
+    }
+    else
+    {
+        oSchoolLabel.text = @"";
+    }
+    
+    
     oNameLabel.text = tScholar.mName;
     oMinValueLabel.text = [NSString stringWithFormat:@"Số tiền nhỏ nhất %ld",(long)tScholar.mMinValue];
     oMaxValueLabel.text = [NSString stringWithFormat:@"Số tiền lớn nhất %ld",(long)tScholar.mMaxValue];

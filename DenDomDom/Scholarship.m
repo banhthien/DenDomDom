@@ -378,8 +378,8 @@
 
     }
     @catch (NSException *exception) {
+        NSLog(@"loiobject%@",exception);
         return nil;
-        NSLog(@"%@",exception);
     }
     
     

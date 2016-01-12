@@ -45,6 +45,8 @@
 @property (nonatomic, strong) NSMutableArray *mScholarMajors;
 @property (nonatomic, strong) NSMutableArray *mTalents;
 @property (nonatomic, copy) NSString *mKeyword;
+@property (nonatomic, strong) Country* mScholarshipCountry;
+
 
 - (NSDictionary*)getFilterDict;
 @end

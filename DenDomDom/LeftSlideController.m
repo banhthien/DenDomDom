@@ -11,6 +11,7 @@
 #import "LeftSlideCell.h"
 #import "TFUtil.h"
 #import "HomeController.h"
+#import "Country.h"
 
 @interface LeftSlideController ()<UITableViewDataSource,UITableViewDelegate,SlideNavigationControllerDelegate>
 {
@@ -108,8 +109,8 @@
         if ([tTabBarController.class isSubclassOfClass:[HomeController class]])
         {
             [TFAppDelegate.mSlideNavigationController closeMenuWithCompletion:^{
-                TFAppDelegate.Country = nil;
-                [((HomeController*)tTabBarController) loadHome:indexPath.row];
+                TFAppDelegate.mCountry = [[Country alloc] init];
+                [((HomeController*)tTabBarController) loadHome:indexPath.row isFirstTime:YES];
                 
             }];
         }

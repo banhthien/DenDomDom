@@ -13,6 +13,8 @@
 #import "Scholarship.h"
 #import "FilterObject.h"
 #import "Country.h"
+#import "TopViewParam.h"
+#import "CountryParam.h"
 
 #import "SlideNavigationController.h"
 #import "ScholarshipDetailController.h"
@@ -32,6 +34,7 @@
     //OUTLET
     __weak IBOutlet UIButton *oCountryButton;
     __weak IBOutlet UITableView *oTableView;
+
 
 }
 @end
@@ -70,9 +73,9 @@
     oCountryButton.layer.cornerRadius = 5;
     oCountryButton.layer.borderColor = [RGB(217, 133, 59) CGColor];
     oCountryButton.layer.borderWidth = 1;
-   
-    [self setUpRightButton];
 
+    [self setUpRightButton];
+    [self loadHome:TFAppDelegate.mCurrentState isFirstTime:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,15 +83,13 @@
     if (!mScholarshipArray) {
         mScholarshipArray = [[NSMutableArray alloc] init];
     }
-    mIsStopLoad = NO;
-    mPageIndex = 1;
-    mPageSize = 10;
-    if (mIsStopLoad == NO) {
-        [mScholarshipArray removeAllObjects];
-        [oTableView reloadData];
-        [self loadHome:TFAppDelegate.mCurrentState];
+    if (TFAppDelegate.mCanRefesh) {
+        [self loadHome:TFAppDelegate.mCurrentState isFirstTime:YES];
     }
-    
+//    else
+//    {
+//        
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -97,13 +98,19 @@
     [mSearchBarTop resignFirstResponder];
 }
 
-- (void)loadHome:(NSInteger)menuLoad
+- (void)loadHome:(NSInteger)menuLoad isFirstTime:(BOOL)isFirst
 {
-    NSString *tCountryName = @"Tất cả";
-    if (TFAppDelegate.Country) {
-        tCountryName = TFAppDelegate.Country.mName;
+    if (isFirst) {
+        mIsStopLoad = NO;
+        mPageIndex = 1;
+        mPageSize = 10;
+        [mScholarshipArray removeAllObjects];
+        [oTableView reloadData];
     }
-    [oCountryButton setTitle:tCountryName forState:UIControlStateNormal];
+
+    
+    [oCountryButton setTitle:TFAppDelegate.mCountry.mName forState:UIControlStateNormal];
+    
     
     isRefesh = NO;
     TFAppDelegate.mCurrentState = menuLoad;
@@ -112,6 +119,7 @@
     {
         TFAppDelegate.mFilterObject.pageNumber = mPageIndex;
         TFAppDelegate.mFilterObject.size = mPageSize;
+        TFAppDelegate.mFilterObject.mScholarshipCountry = TFAppDelegate.mCountry;
         NSDictionary *tParam = [TFAppDelegate.mFilterObject getFilterDict];
         
         [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListBy withParam:tParam success:^(id bProductArray) {
@@ -134,36 +142,36 @@
         }];
         
     }
-    else if (TFAppDelegate.mCurrentState == kFilterFilterCountry)
-    {
-        FilterObject *tFIlter =[[FilterObject alloc] init];
-
-        tFIlter.pageNumber = mPageIndex;
-        tFIlter.size = mPageSize;
-        tFIlter.mStuCitizenship = TFAppDelegate.Country;
-        NSDictionary *tParam = [tFIlter getFilterDict];
-        
-        [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListBy withParam:tParam success:^(id bProductArray) {
-            if (bProductArray == nil) {
-                return ;
-            }
-            if ([(NSArray *)bProductArray count] < mPageSize)
-            {
-                mIsStopLoad = YES;
-            }
-            [mScholarshipArray addObjectsFromArray:bProductArray];
-            mPageIndex++;
-            isRefesh = YES;
-            [oTableView reloadData];
-            
-            [TFAppDelegate hideConnectionInView:self.view];
-        } failure:^(NSError *bError, NSString *bMessage) {
-            isRefesh = YES;
-            [TFAppDelegate hideConnectionInView:self.view];
-            
-        }];
-
-    }
+//    else if (TFAppDelegate.mCurrentState == kFilterFilterCountry)
+//    {
+//        FilterObject *tFIlter =[[FilterObject alloc] init];
+//
+//        tFIlter.pageNumber = mPageIndex;
+//        tFIlter.size = mPageSize;
+//        tFIlter.mStuCitizenship = TFAppDelegate.mCountry;
+//        NSDictionary *tParam = [tFIlter getFilterDict];
+//        
+//        [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListBy withParam:tParam success:^(id bProductArray) {
+//            if (bProductArray == nil) {
+//                return ;
+//            }
+//            if ([(NSArray *)bProductArray count] < mPageSize)
+//            {
+//                mIsStopLoad = YES;
+//            }
+//            [mScholarshipArray addObjectsFromArray:bProductArray];
+//            mPageIndex++;
+//            isRefesh = YES;
+//            [oTableView reloadData];
+//            
+//            [TFAppDelegate hideConnectionInView:self.view];
+//        } failure:^(NSError *bError, NSString *bMessage) {
+//            isRefesh = YES;
+//            [TFAppDelegate hideConnectionInView:self.view];
+//            
+//        }];
+//
+//    }
     else if (TFAppDelegate.mCurrentState == kFilterFilterNo)
     {
         FilterObject *tFIlter =[[FilterObject alloc] init];
@@ -195,11 +203,14 @@
     }
     else if(TFAppDelegate.mCurrentState == kFilterNew)
     {
+
+        CountryParam *tCountryParam = [[CountryParam alloc]init];
+        tCountryParam.pageNumber = mPageIndex;
+        tCountryParam.size = mPageSize;
+        tCountryParam.mScholarshipCountry = TFAppDelegate.mCountry;
+         NSDictionary *tParam = [tCountryParam getCountryParamDict];
         
-        NSDictionary *tParam = @{};
-        NSInteger urlParam = 10;
-        
-        [TFWebServiceManager getScholarshipArrayWithURL:kAPI_ListNewScholarship withID:urlParam withParams:tParam success:^(id bProductArray) {
+        [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListNewScholarship withParam:tParam success:^(id bProductArray) {
             if (bProductArray == nil) {
                 
                 return ;
@@ -220,26 +231,65 @@
     }
     else if(TFAppDelegate.mCurrentState == kFilterNoiBat)
     {
-        NSDictionary *tParam = @{@"pageNumber":@1, @"pageSize":@5, @"allowEmptyString":@1, @"maxResult":@10};
+        TopViewParam *tviewParam = [[TopViewParam alloc] init];
+        
+        tviewParam.pageNumber = mPageIndex;
+        tviewParam.pageSize = mPageSize;
+        tviewParam.allowEmptyString = 1;
+        tviewParam.maxResult = 25;
+        tviewParam.mScholarshipCountry = TFAppDelegate.mCountry;
+        
+        NSDictionary *tParam = [tviewParam getTopViewParamDict];
+        
         [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListTopView withParam:tParam success:^(id bProductArray) {
-            mScholarshipArray = bProductArray;
+            if (bProductArray == nil) {
+                return ;
+            }
+            if ([(NSArray *)bProductArray count] < mPageSize)
+            {
+                mIsStopLoad = YES;
+            }
+            [mScholarshipArray addObjectsFromArray:bProductArray];
+            mPageIndex++;
             isRefesh = YES;
             [oTableView reloadData];
+            
             [TFAppDelegate hideConnectionInView:self.view];
         } failure:^(NSError *bError, NSString *bMessage) {
             isRefesh = YES;
             [TFAppDelegate hideConnectionInView:self.view];
+            
         }];
-        
     }
     else if(TFAppDelegate.mCurrentState == kFilterDuHoc)
     {
-        [TFAppDelegate hideConnectionInView:self.view];
-    }
-    else if(TFAppDelegate.mCurrentState == kFilterSearch)
-    {
+        CountryParam *tCountryParam = [[CountryParam alloc] init];
         
-        [TFAppDelegate hideConnectionInView:self.view];
+        tCountryParam.pageNumber = mPageIndex;
+        tCountryParam.size = mPageSize;
+        tCountryParam.mScholarshipCountry = TFAppDelegate.mCountry;
+        
+        NSDictionary *tParam = [tCountryParam getCountryParamDict];
+        
+        [TFWebServiceManager postScholarshipArrayWithParams:kAPI_ListDuHoc withParam:tParam success:^(id bProductArray) {
+            if (bProductArray == nil) {
+                return ;
+            }
+            if ([(NSArray *)bProductArray count] < mPageSize)
+            {
+                mIsStopLoad = YES;
+            }
+            [mScholarshipArray addObjectsFromArray:bProductArray];
+            mPageIndex++;
+            isRefesh = YES;
+            [oTableView reloadData];
+            
+            [TFAppDelegate hideConnectionInView:self.view];
+        } failure:^(NSError *bError, NSString *bMessage) {
+            isRefesh = YES;
+            [TFAppDelegate hideConnectionInView:self.view];
+            
+        }];
     }
 }
 
@@ -359,8 +409,14 @@
         return 50;
     }
     Scholarship *tScholar = mScholarshipArray[indexPath.row];
-    return tScholar.mCellHeight;
-//    return 320;
+    if (tScholar.mCountry.mID == 0) {
+       return 340;
+    }
+    else
+    {
+        return 350;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -387,7 +443,7 @@
     if (indexPath.row == mScholarshipArray.count-1)
     {
         if (mIsStopLoad == NO) {
-            [self loadHome:TFAppDelegate.mCurrentState];
+            [self loadHome:TFAppDelegate.mCurrentState isFirstTime:NO];
         }
         NSLog(@"count dsad %ld",(long)mScholarshipArray.count);
     }

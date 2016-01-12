@@ -303,7 +303,7 @@
         Country *country = mFilterArray[sIndex];
         if ( TFAppDelegate.mFilterObject.mStuCitizenship.mID == country.mID) {
             mCurrentSelected = -1;
-            TFAppDelegate.mFilterObject.mStuGender = nil;
+            TFAppDelegate.mFilterObject.mStuCitizenship = nil;
             return;
         }
         

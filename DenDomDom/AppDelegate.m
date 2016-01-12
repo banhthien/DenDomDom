@@ -29,8 +29,9 @@
     self.mFilterObject = [[FilterObject alloc] init];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     // Override point for customization after application launch.
-    self.mCurrentState = kFilterFilterNo;
-    self.Country = nil;
+    self.mCurrentState = kFilterNew;
+    self.mCountry = [[Country alloc] init];
+    self.mCanRefesh = NO;
     return YES;
 }
 
@@ -200,6 +201,12 @@
     }
     [TFAppDelegate.mSlideNavigationController openLeftMenu];
     
+}
+
+- (void)showMessage:(NSString *)sMessage withTitle:(NSString*)sTitle
+{
+    UIAlertView *tAlertView = [[UIAlertView alloc] initWithTitle:sTitle message:sMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [tAlertView show];
 }
 
 - (void)showConnectionInView:(UIView *)sView

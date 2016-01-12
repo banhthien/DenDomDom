@@ -20,7 +20,7 @@
         return nil;
     }
     self.mID = 0;
-    self.mName = @"";
+    self.mName = @"Tất cả";
     
     return self;
 }

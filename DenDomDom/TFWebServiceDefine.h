@@ -13,35 +13,36 @@
 
 #define kAPI_IsDebug                        NO
 
-#define kAPI_Scholarship                    @"Scholarship/"
-#define kAPI_Country                        @"Country/"
-#define kAPI_AcademicLevel                  @"AcademicLevel/"
-#define kAPI_ScholarshipType                @"ScholarshipType/"
-#define kAPI_Gender                         @"Gender/"
-#define kAPI_Religion                       @"Religion/"
-#define kAPI_Disability                     @"Disability/"
-#define kAPI_Ethnic                         @"Ethnic/"
-#define kAPI_FamilyPolicy                   @"FamilyPolicy/"
-#define kAPI_Major                          @"Major/"
-#define kAPI_Province                       @"Province/"
-#define kAPI_School                         @"School/"
-#define kAPI_Sponsor                        @"Sponsor/"
-#define kAPI_Talent                         @"Talent/"
-#define kAPI_TerminalIll                    @"TerminalIll/"
+#define kAPI_Scholarship                    @"scholarship/"
+#define kAPI_Country                        @"country/"
+#define kAPI_AcademicLevel                  @"academic-level/"
+#define kAPI_ScholarshipType                @"scholarship-type/"
+#define kAPI_Gender                         @"gender/"
+#define kAPI_Religion                       @"religion/"
+#define kAPI_Disability                     @"disability/"
+#define kAPI_Ethnic                         @"ethnic/"
+#define kAPI_FamilyPolicy                   @"family-policy/"
+#define kAPI_Major                          @"major/"
+#define kAPI_Province                       @"province/"
+#define kAPI_School                         @"school/"
+#define kAPI_Sponsor                        @"sponsor/"
+#define kAPI_Talent                         @"talent/"
+#define kAPI_TerminalIll                    @"terminal-ill/"
 
 
 #pragma mark - DEFINE METHOD
 //-----------------------------------------
-#define kAPI_GetList                        @"getList/"
-#define kAPI_GetById                        @"getById/"
+#define kAPI_GetList                        @"lists/all/"
+#define kAPI_GetById                        @"id/"
 
 
-#define kAPI_ListBy                         @"listBy/"
-#define kAPI_ListNewScholarship             @"listNewScholarship/"
+#define kAPI_ListBy                         @"list/mobile/filter/"
+#define kAPI_ListNewScholarship             @"list/mobile/news/"
 #define kAPI_ListByCountryWithNoSchool      @"listByCountryWithNoSchool/"
-#define kAPI_GetListWithPageSize            @"getListWithPageSize/"
-#define kAPI_ListTopView                    @"listTopView/"
+#define kAPI_ListTopView                    @"list/mobile/topview/"
 #define kAPI_GetListByKeyWord               @"getListWithKeyWord/"
+#define kAPI_ListDuHoc                      @"list/mobile/studing-abroad"
+
 
 
 

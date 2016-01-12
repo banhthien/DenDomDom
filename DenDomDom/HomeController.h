@@ -10,6 +10,6 @@
 
 @interface HomeController : UIViewController
 
-- (void)loadHome:(NSInteger)menuLoad;
+- (void)loadHome:(NSInteger)menuLoad isFirstTime:(BOOL)isFirst;
 
 @end

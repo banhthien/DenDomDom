@@ -58,7 +58,7 @@
 //    NSString *tURLString = [NSString stringWithFormat:@"%@%@", kAPI_Domain, kAPI_SignInFacebook];
     NSString *tURLString = @"";
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
-
+    
     
     [tRequestManager POST:tURLString parameters:sParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -98,6 +98,12 @@
 
 + (void) getScholarshipArrayWithURL:(NSString *)nameMethod withID:(NSInteger)sURLParams withParams:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
+    
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@%ld",kAPI_Domain,kAPI_Scholarship, nameMethod, (long)sURLParams];
@@ -142,6 +148,11 @@
 //gender
 + (void)getListGender:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Gender, nameMethod];
@@ -186,6 +197,11 @@
 //country
 + (void)getListCountry:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Country, nameMethod];
@@ -231,6 +247,11 @@
 //Religion
 + (void)getListReligion:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Religion, nameMethod];
@@ -275,6 +296,12 @@
 //Disability
 + (void)getListDisability:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
+    
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Disability, nameMethod];
@@ -319,6 +346,11 @@
 //Terminal_Ill
 + (void)getListTerminalIll:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_TerminalIll, nameMethod];
@@ -363,6 +395,11 @@
 //Family_Policy
 + (void)getListFamilyPolicy:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_FamilyPolicy, nameMethod];
@@ -407,6 +444,11 @@
 //AcademicLevel
 + (void)getListAcademicLevel:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_AcademicLevel, nameMethod];
@@ -451,6 +493,11 @@
 //Major
 + (void)getListMajor:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Major, nameMethod];
@@ -495,6 +542,11 @@
 //ScholarshipType
 + (void)getListScholarshipType:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_ScholarshipType, nameMethod];
@@ -540,6 +592,11 @@
 //TALENT
 + (void)getListTalent:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void  (^)(id bProductArray))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Talent, nameMethod];
@@ -588,10 +645,16 @@
 
 + (void)postScholarshipArrayWithParams:(NSString *)nameMethod withParam:(NSDictionary *)sParams success:(void (^)(id bProductObj))bSuccess failure:(void (^)(NSError *bError, NSString *bMessage))bFail
 {
+    if (![self checkConnection]) {
+        [TFAppDelegate showMessage:@"Please check your internet connection!" withTitle:@"No internet"];
+        bFail(nil, @"no Internet");
+        return;
+    }
+    
     AFHTTPRequestOperationManager *tRequestManager = [AFHTTPRequestOperationManager manager];
     
     tRequestManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [tRequestManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [tRequestManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSString* url = [NSString stringWithFormat:@"%@%@%@",kAPI_Domain,kAPI_Scholarship, nameMethod];
     
@@ -608,9 +671,15 @@
                 NSMutableArray *tArray = [[NSMutableArray alloc] init];
                 for (NSDictionary *tDict in responseObject)
                 {
-                    Scholarship *tObj = [[Scholarship alloc] initWithDictionary:tDict];
+                    @try {
+                        Scholarship *tObj = [[Scholarship alloc] initWithDictionary:tDict];
+                        
+                        [tArray addObject:tObj];
+                    }
+                    @catch (NSException *exception) {
+                        NSLog(@"loioioioio%@", exception);
+                    }
                     
-                       [tArray addObject:tObj];
                 }
                 bSuccess([self sortArray:tArray]);
             }

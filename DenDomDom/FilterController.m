@@ -72,7 +72,7 @@
 }
 - (IBAction)actionBackButtonPressed:(id)sender
 {
-    TFAppDelegate.mCurrentState = kFilterFilterNo;
+    TFAppDelegate.mCanRefesh = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -88,7 +88,8 @@
 
 - (IBAction)actionRefeshButtonPressed:(id)sender
 {
-
+    TFAppDelegate.mFilterObject = [[FilterObject alloc] init];
+    [oTableView reloadData];
 }
 
 #pragma mark - UITableView Datasource and Delegate
@@ -323,13 +324,16 @@
 
 - (IBAction)actionCancelPress:(id)sender
 {
-    TFAppDelegate.mCurrentState = kFilterFilterNo;
+//    TFAppDelegate.mCurrentState = kFilterFilterNo;
+    TFAppDelegate.mCanRefesh = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)actionFilterPress:(id)sender
 {
+    TFAppDelegate.mCountry = [[Country alloc] init];
     TFAppDelegate.mCurrentState = kFilterFilterHave;
+    TFAppDelegate.mCanRefesh = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end
